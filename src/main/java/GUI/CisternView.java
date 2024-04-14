@@ -1,5 +1,6 @@
 package GUI;
 
+import GUI.init.ImageLoader;
 import model.Cistern;
 
 import javax.swing.*;
@@ -7,6 +8,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.io.IOException;
+import java.net.URL;
 
 /**
  * A Ciszterna megjelenítéséért felelős osztály.
@@ -24,16 +27,29 @@ public class CisternView extends JButton implements Viewable {
     /**
      * A normál állapotú ciszterna képe.
      */
-    private static Image normal = new ImageIcon(Controller.assetsPath + "cistern.png").getImage();
+    private static Image normal = new ImageIcon(ImageLoader.loadImage("cistern.png")).getImage();
     /**
      * A csővel rendelkező ciszterna képe.
      */
-    private static Image pipeAvailable = new ImageIcon(Controller.assetsPath + "cistern_pipe.png").getImage();
+    private static Image pipeAvailable = new ImageIcon(ImageLoader.loadImage("cistern_pipe.png")).getImage();
     /**
      * A ciszterna épp megjelnítendő képe.
      * Lehet normal vagy pipeAvailable.
      */
     private Image image = normal;
+
+//    static {
+//        try {
+//            URL imageUrl = CisternView.class.getResource(Controller.assetsPath + "cistern.png");
+//            if(imageUrl == null) {
+//                throw new IOException("Image file not found");
+//            }
+//
+//            normal = new ImageIcon(imageUrl).getImage();
+//        } catch (IOException e) {
+//            throw new RuntimeException("Error loading image", e);
+//        }
+//    }
 
     /**
      * Konstruktor.

@@ -4,10 +4,12 @@ import javax.swing.*;
 
 import GUI.Controller;
 import GUI.Window;
+import GUI.init.ImageLoader;
 
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * A játék menüjét reprezentáló panel.
@@ -16,7 +18,7 @@ public class MenuPanel extends JPanel {
     /**
      * A menüpanel háttérképe.
      */
-    private static Image background = new ImageIcon(Controller.assetsPath + "panel.png").getImage();
+    private static Image background = new ImageIcon(ImageLoader.loadImage("panel.png")).getImage();
     /**
      * Az akciókat reprezentáló akciópanel.
      */
@@ -68,7 +70,11 @@ public class MenuPanel extends JPanel {
      */
     public static void setFontTitle(JLabel title) {
         try {
-            Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("drukmakor_assets/Chalkduster.ttf")).deriveFont(30f);
+            InputStream inputStream = MenuPanel.class.getResourceAsStream("/assets/Chalkduster.ttf");
+            if (inputStream == null) {
+                throw new IOException("Font file not found");
+            }
+            Font customFont = Font.createFont(Font.TRUETYPE_FONT, inputStream).deriveFont(30f);
             GraphicsEnvironment ge =
                     GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(customFont);

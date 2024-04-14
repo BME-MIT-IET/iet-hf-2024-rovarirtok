@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import GUI.Controller;
 import GUI.Window;
+import GUI.init.ImageLoader;
 
 /**
  * A csapatok pontszámát reprezentáló panel.
@@ -20,12 +21,12 @@ public class ScorePanel extends JPanel {
     /**
      * A szerelők csapatát reprezentáló kép.
      */
-    private static ImageIcon mechanicImage = new ImageIcon(Controller.assetsPath + "mechanic.png");
+    private static ImageIcon mechanicImage = new ImageIcon(ImageLoader.loadImage("mechanic.png"));
 
     /**
      * A szabotőrök csapatát reprezentáló kép.
      */
-    private static ImageIcon saboteurImage = new ImageIcon(Controller.assetsPath + "saboteur.png");
+    private static ImageIcon saboteurImage = new ImageIcon(ImageLoader.loadImage("saboteur.png"));
     static {
         mechanicImage = new ImageIcon(mechanicImage.getImage()
                 .getScaledInstance(Window.BUTTONSIZE, Window.BUTTONSIZE, Image.SCALE_AREA_AVERAGING));

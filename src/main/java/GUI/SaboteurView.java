@@ -1,5 +1,6 @@
 package GUI;
 
+import GUI.init.ImageLoader;
 import model.Field;
 import model.Saboteur;
 
@@ -22,7 +23,7 @@ public class SaboteurView extends JButton implements Viewable {
     /**
      * A szabotőr ikonja.
      */
-    public static Image image = new ImageIcon(Controller.assetsPath + "saboteur.png").getImage();
+    public static Image image = new ImageIcon(ImageLoader.loadImage("saboteur.png")).getImage();
     /**
      * Konstruktor.
      * @param saboteur A megjelenítendő szabotőr.

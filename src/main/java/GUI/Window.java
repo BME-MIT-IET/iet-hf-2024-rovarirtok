@@ -2,6 +2,7 @@ package GUI;
 
 import javax.swing.*;
 
+import GUI.init.ImageLoader;
 import GUI.menu.MenuPanel;
 
 import java.awt.*;
@@ -27,7 +28,7 @@ public class Window extends JFrame {
     /**
      * A játékfelület háttere (sivatag)
      */
-    private static Image background = new ImageIcon(Controller.assetsPath + "background.png").getImage();
+    private static Image background = new ImageIcon(ImageLoader.loadImage("background.png")).getImage();
     /**
      * A megjelenítendő objektumok tárolója
      */

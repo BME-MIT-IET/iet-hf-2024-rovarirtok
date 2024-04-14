@@ -1,5 +1,6 @@
 package GUI;
 
+import GUI.init.ImageLoader;
 import model.Pump;
 
 import javax.swing.*;
@@ -23,11 +24,11 @@ public class PumpView extends JButton implements Viewable {
     /**
      * A normál állapotú pumpa képe.
      */
-    private static Image normal = new ImageIcon(Controller.assetsPath + "pump.png").getImage();
+    private static Image normal = new ImageIcon(ImageLoader.loadImage("pump.png")).getImage();
     /**
      * A törött pumpa képe.
      */
-    private static Image broken = new ImageIcon(Controller.assetsPath + "pump_broken.png").getImage();
+    private static Image broken = new ImageIcon(ImageLoader.loadImage("pump_broken.png")).getImage();
     /**
      * A pumpa épp megjelenítendő képe.
      * Lehet normal vagy broken, alapértelmezetten normal.

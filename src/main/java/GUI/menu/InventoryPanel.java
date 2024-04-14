@@ -11,6 +11,7 @@ import GUI.Controller;
 import GUI.Window;
 import GUI.actions.PlacePipeButton;
 import GUI.actions.PlacePumpButton;
+import GUI.init.ImageLoader;
 import model.Mechanic;
 
 /**
@@ -20,12 +21,12 @@ public class InventoryPanel extends JPanel {
     /**
      * Egy pumpát reprezentáló kép.
      */
-    private static Image pumpImage = new ImageIcon(Controller.assetsPath + "pump.png").getImage();
+    private static Image pumpImage = new ImageIcon(ImageLoader.loadImage("pump.png")).getImage();
 
     /**
      * Egy csövet reprezentáló kép.
      */
-    private static Image pipeImage = new ImageIcon(Controller.assetsPath + "pipe.png").getImage();
+    private static Image pipeImage = new ImageIcon(ImageLoader.loadImage("pipe.png")).getImage();
 
     /**
      * A cső, mint gomb, amelyre ha egy megfelelő helyen rákattintunk, akkor lehelyezhetjük a csövet.

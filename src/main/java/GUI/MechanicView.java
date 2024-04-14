@@ -1,5 +1,6 @@
 package GUI;
 
+import GUI.init.ImageLoader;
 import model.Field;
 import model.Mechanic;
 
@@ -22,7 +23,7 @@ public class MechanicView extends JButton implements Viewable {
     /**
      * A Mechanic képe.
      */
-    public static Image image = new ImageIcon(Controller.assetsPath + "mechanic.png").getImage();
+    public static Image image = new ImageIcon(ImageLoader.loadImage("mechanic.png")).getImage();
     /**
      * Konstruktor.
      * @param mechanic A megjelenítendő Mechanic.

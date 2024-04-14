@@ -17,10 +17,6 @@ import java.util.Set;
  */
 public class Controller {
     /**
-     * A játék megjelenítéséhez használt fájlok elérési útja.
-     */
-    public static String assetsPath = "drukmakor_assets/";
-    /**
      * A játék irányításáért felelős osztály egyetlen példánya.
      */
     public static Controller instance = new Controller();
