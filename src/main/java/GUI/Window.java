@@ -64,7 +64,7 @@ public class Window extends JFrame {
         super();
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setTitle("Drukmakori sivatag");
+        this.setTitle("Drukmákori Sivatag");
         this.setVisible(true);
         setResizable(false);
         this.setMinimumSize(new Dimension(WIDTH, HEIGHT));
