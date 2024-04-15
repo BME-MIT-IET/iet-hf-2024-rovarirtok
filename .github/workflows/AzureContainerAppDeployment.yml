@@ -1,0 +1,49 @@
+name: Deploy Container Image to Azure App Service
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'adopt'
+          cache: maven
+
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml --no-transfer-progress
+
+      - name: 'Login via Azure CLI'
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - uses: azure/docker-login@v1
+        with:
+          login-server: drukmakorisivatag.azurecr.io
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+      - run: |
+          docker build . -t drukmakorisivatag.azurecr.io/drukmakori-sivatag-webswing:${{ github.sha }}
+          docker push drukmakorisivatag.azurecr.io/drukmakori-sivatag-webswing:${{ github.sha }}     
+
+      - uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'DrukmakoriSivatag'
+          images: 'drukmakorisivatag.azurecr.io/drukmakori-sivatag-webswing:${{ github.sha }}'
+
+      - name: Azure logout
+        run: |
+          az logout
