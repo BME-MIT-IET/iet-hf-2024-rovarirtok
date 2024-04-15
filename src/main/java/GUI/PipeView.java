@@ -1,5 +1,6 @@
 package GUI;
 
+import GUI.init.ImageLoader;
 import model.FieldNode;
 import model.Pipe;
 
@@ -39,27 +40,27 @@ public class PipeView extends JPanel implements Viewable {
     /**
      * A cső normál állapotbeli képe.
      */
-    private static Image normal = new ImageIcon(Controller.assetsPath + "pipe.png").getImage();
+    private static Image normal = new ImageIcon(ImageLoader.loadImage("pipe.png")).getImage();
     /**
      * A cső törött állapotbeli képe.
      */
-    private static Image broken = new ImageIcon(Controller.assetsPath + "pipe_broken.png").getImage();
+    private static Image broken = new ImageIcon(ImageLoader.loadImage("pipe_broken.png")).getImage();
     /**
      * A cső csúszós és törött állapotbeli képe.
      */
-    private static Image slippery_broken = new ImageIcon(Controller.assetsPath + "pipe_slippery_broken.png").getImage();
+    private static Image slippery_broken = new ImageIcon(ImageLoader.loadImage("pipe_slippery_broken.png")).getImage();
     /**
      * A cső csúszós és normal, azaz nem törött állapotbeli képe.
      */
-    private static Image slippery_normal = new ImageIcon(Controller.assetsPath + "pipe_slippery.png").getImage();
+    private static Image slippery_normal = new ImageIcon(ImageLoader.loadImage("pipe_slippery.png")).getImage();
     /**
      * A cső ragacsos és törött állapotbeli képe.
      */
-    private static Image sticky_broken = new ImageIcon(Controller.assetsPath + "pipe_sticky_broken.png").getImage();
+    private static Image sticky_broken = new ImageIcon(ImageLoader.loadImage("pipe_sticky_broken.png")).getImage();
     /**
      * A cső ragacsos és normal, azaz nem törött állapotbeli képe.
      */
-    private static Image sticky_normal = new ImageIcon(Controller.assetsPath + "pipe_sticky.png").getImage();
+    private static Image sticky_normal = new ImageIcon(ImageLoader.loadImage("pipe_sticky.png")).getImage();
     /**
      * A cső épp megjelenítendő képe.
      * Alapértelmezetten normal.

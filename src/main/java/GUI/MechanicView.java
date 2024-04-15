@@ -1,39 +1,40 @@
 package GUI;
 
+import GUI.init.ImageLoader;
 import model.Field;
-import model.Saboteur;
+import model.Mechanic;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-
 /**
- * A szabotőr (Saboteur) megjelenítéséért felelős osztály.
+ * A Mechanic osztály megjelenítéséért felelős osztály.
+ * A MechanicView egy klikkelhető gomb, amivel a játékos kiválaszthatja a Mechanic-ot, ezért a JButton-ből származik.
  */
-public class SaboteurView extends JButton implements Viewable {
+public class MechanicView extends JButton implements Viewable {
     /**
-     * A megjelenített szabotőr ikon mérete.
+     * A megjelnített Mechanic képének mérete.
      */
     private static int SIZE = (int) (Window.BUTTONSIZE * 0.6);
     /**
-     * A játékbeli megjelenítendő szabotőr.
+     * A játékbeli megjelenítendő Mechanic.
      */
-    private Saboteur saboteur;
+    private Mechanic mechanic;
     /**
-     * A szabotőr ikonja.
+     * A Mechanic képe.
      */
-    public static Image image = new ImageIcon(Controller.assetsPath + "saboteur.png").getImage();
+    public static Image image = new ImageIcon(ImageLoader.loadImage("mechanic.png")).getImage();
     /**
      * Konstruktor.
-     * @param saboteur A megjelenítendő szabotőr.
+     * @param mechanic A megjelenítendő Mechanic.
      */
-    public SaboteurView(Saboteur saboteur) {
+    public MechanicView(Mechanic mechanic) {
         super();
 
-        this.saboteur = saboteur;
+        this.mechanic = mechanic;
 
         this.addActionListener((ActionEvent e) -> {
-            Controller.instance.selectPlayer(saboteur);
+            Controller.instance.selectPlayer(this.mechanic);
         });
 
         Point position = getPosition();
@@ -44,14 +45,14 @@ public class SaboteurView extends JButton implements Viewable {
         this.setRolloverEnabled(true);
     }
     /**
-     * Visszaadja a szabotőr pozícióját.
-     * @return A szabotőr pozíciója.
+     * Visszaadja a megjelenítendő objektum pozícióját.
+     * @return A megjelenítendő objektum pozíciója.
      */
     @Override
     public Point getPosition() {
-        Field field = saboteur.getPosition();
+        Field field = mechanic.getPosition();
 
-        double index = field.getPlayerIndex(saboteur);
+        double index = field.getPlayerIndex(mechanic);
         double dx = Math.cos(index * Math.PI / 2.0) * Window.BUTTONSIZE / 2,
                 dy = Math.sin(index * Math.PI / 2.0) * Window.BUTTONSIZE / 2;
 
@@ -62,8 +63,8 @@ public class SaboteurView extends JButton implements Viewable {
         return new Point(cx + (int) dx - SIZE / 2, cy + (int) dy - SIZE / 2);
     }
     /**
-     * A szabotőr megjelenítésének frissítése a modellbeli változások alapján.
-     * A szabotőr pozíciója változhat a játék során.
+     * A megjelenítendő objektumot rajzoltatja újra, a megváltozott adatok alapján.
+     * A Mechanic pozíciója változhat a játék során.
      */
     @Override
     public void update() {
@@ -73,8 +74,8 @@ public class SaboteurView extends JButton implements Viewable {
         repaint();
     }
     /**
-     * A szabotőrt kirajzoló metódus.
-     * @param g az <code>Graphics</code> objektum, amit a kirajzoláshoz használunk.
+     * Kirajzolja a Mechanic-ot.
+     * @param g a <code>Graphics</code> objektum, amit rajzoláshoz használunk.
      */
     @Override
     protected void paintComponent(Graphics g) {
@@ -82,9 +83,9 @@ public class SaboteurView extends JButton implements Viewable {
 
         int w = getWidth(), h = getHeight();
 
-        boolean isSelected = Controller.instance.selectedPlayer == saboteur;
+        boolean isSelected = Controller.instance.selectedPlayer == mechanic;
         if (isSelected) {
-            g.setColor(new Color(0, 255, 0, 255));
+            g.setColor(Color.GREEN);
             g.fillOval(0, 0, w, h);
         }
 
