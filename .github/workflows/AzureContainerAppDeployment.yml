@@ -1,6 +1,9 @@
 name: Deploy Container Image to Azure App Service
 
 on:
+  push:
+    branches:
+      - 'build-tool_CI'
   workflow_dispatch:
 
 permissions:
