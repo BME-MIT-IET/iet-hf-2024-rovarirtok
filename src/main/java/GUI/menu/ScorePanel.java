@@ -61,6 +61,7 @@ public class ScorePanel extends JPanel {
         mechanicScore.setVerticalTextPosition(SwingConstants.BOTTOM);
         mechanicScore.setHorizontalTextPosition(SwingConstants.CENTER);
         mechanicScore.setBorder(new EmptyBorder(0, 10, 0, 10));
+        mechanicScore.setName("mechanicScore");
 
         MenuPanel.setFontTitle(saboteurScore);
         saboteurScore.setText("0");
@@ -68,6 +69,7 @@ public class ScorePanel extends JPanel {
         saboteurScore.setVerticalTextPosition(SwingConstants.BOTTOM);
         saboteurScore.setHorizontalTextPosition(SwingConstants.CENTER);
         saboteurScore.setBorder(new EmptyBorder(0, 10, 0, 10));
+        saboteurScore.setName("saboteurScore");
 
         JPanel panel = new JPanel();
         panel.add(mechanicScore);
