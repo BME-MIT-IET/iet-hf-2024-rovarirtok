@@ -19,10 +19,7 @@ jobs:
           distribution: 'adopt'
           cache: maven
 
-      - name: Test
+      - name: Build and Test
         uses: coactions/setup-xvfb@v1
         with:
-          run: mvn test
-
-      - name: Build
-        run: mvn -B package --file pom.xml --no-transfer-progress -DskipTest
+          run: mvn -B package --file pom.xml --no-transfer-progress
