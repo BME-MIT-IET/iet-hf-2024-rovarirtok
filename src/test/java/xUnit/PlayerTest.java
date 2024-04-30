@@ -17,6 +17,8 @@ public class PlayerTest {
         player = new Mechanic();
         fieldNode = new Pump();
         pipe = new Pipe();
+        fieldNode.connect(pipe);
+        pipe.connect(fieldNode);
     }
 
     /**
@@ -25,7 +27,6 @@ public class PlayerTest {
      */
     @Test
     void testPlayerMovesToNeighbourField() {
-        fieldNode.connect(pipe);
         player.setPosition(pipe);
         player.moveTo(fieldNode);
         assertEquals(player.getPosition(), fieldNode, "The position of the player does not equal the field they moved to!");
@@ -62,4 +63,28 @@ public class PlayerTest {
         player.makeSticky(pipe);
         assertTrue(pipe.isSticky(), "The pipe should become sticky, after a player makes it sticky.");
     }
+
+    /**
+     * A player cannot move from a sticky pipe.
+     */
+    @Test
+    void testPlayerMoveFromStickyPipe() {
+        player.makeSticky(pipe);
+        player.moveTo(pipe);
+        player.moveTo(fieldNode);
+        assertEquals(player.getPosition(), pipe, "The player should not be able to move from a sticky pipe.");
+    }
+
+    /**
+     * When a player steps on a slippery pipe, they should slip off it.
+     */
+    @Test
+    void testPlayerStepOnSlipperyPipe() {
+        new Saboteur().makeSlippery(pipe);
+        player.setPosition(fieldNode);
+        player.moveTo(pipe);
+        assertNotEquals(player.getPosition(), pipe, "The player should slip off to a neighbour of a slippery pipe when stepping on it.");
+    }
+
+
 }

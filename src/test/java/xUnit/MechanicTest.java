@@ -37,6 +37,17 @@ public class MechanicTest {
     }
 
     /**
+     * Tests whether the pump pick up action works.
+     * When a mechanic picks up a pump successfully, it should appear in their inventory.
+     */
+    @Test
+    public void testMechanicPicksUpPump() {
+        mechanic.setPosition(cisternWithPipe);
+        mechanic.pickupPump();
+        assertNotNull(mechanic.getPump(), "The mechanic should have a pump in their inventory!");
+    }
+
+    /**
      * Mechanic fixes broken pump. After the action the pump should not be broken.
      */
     @Test
@@ -59,24 +70,57 @@ public class MechanicTest {
     }
 
     /**
-     * Mechanic fixes broken pipe. After the action the pipe should not be broken.
+     * Mechanic connects a pipe to a field node.
+     * The pipe and field node should become connected.
      */
     @Test
-    public void testMechanicFixesBrokenPipe() {
-        mechanic.setPosition(pipe);
-        pipe.breakPipe();
-        mechanic.fixPipe(pipe);
-        assertFalse(pipe.isBroken(), "The pipe should not be broken after being fixed!");
+    public void testMechanicConnectsPipeToFieldNode() {
+        mechanic.setPipe(pipe);
+        mechanic.connectPipe(pipe, pump);
+        assertTrue(pipe.getEnds().contains(pump), "The pipe should be connected to the pump!");
+        assertTrue(pump.hasNeighbour(pipe), "The pump should be connected to the pipe!");
     }
 
     /**
-     * Mechanic attempts to fix a pipe that is not broken.
-     * The pipe should remain not broken.
+     * Mechanic disconnects a pipe from a field node.
+     * After the action the connection between the two objects should disappear.
      */
     @Test
-    public void testMechanicFixesNotBrokenPipe() {
-        mechanic.setPosition(pipe);
-        mechanic.fixPipe(pipe);
-        assertFalse(pipe.isBroken(), "The pipe should remain not broken!");
+    public void testMechanicDisconnectsPipeFromFieldNode() {
+        pipe.connect(pump);
+        pump.connect(pipe);
+        mechanic.disconnectPipe(pipe, pump);
+        assertTrue(pipe.getEnds().isEmpty(), "The pipe should be disconnected!");
+        assertTrue(pump.getConnectedNodes().isEmpty(), "The pump should be disconnected!");
+    }
+
+    /**
+     * Mechanic places a pipe from their inventory on the field.
+     * The pipe should be connected to the pump they currently stand on, and their inventory should become empty.
+     */
+    @Test
+    public void testMechanicPlacesPipe() {
+        mechanic.setPosition(pump);
+        mechanic.setPipe(pipe);
+        mechanic.placePipe(pump);
+        assertTrue(pipe.getEnds().contains(pump), "The pipe and the pump should be connected!");
+        assertNull(mechanic.getPipe(), "The mechanic should not have a pipe in their inventory, after it is placed.");
+    }
+
+    /**
+     * Mechanic places a pump on a pipe from their inventory.
+     * After it is place, they should not have a pump in their inventory anymore.
+     * The pipe should be cut in half and connected to the newly placed pump.
+     */
+    @Test
+    public void testMechanicPlacesPump() {
+        pipe.connect(new Pump());
+        pipe.connect(pump);
+        mechanic.setPump(pump);
+        Pipe newPipe = mechanic.placePump(pump, pipe);
+        assertNotNull(newPipe, "The pipe should be cut in half, creating a new Pipe object.");
+        assertTrue(pipe.getEnds().contains(pump), "The newly placed pump should be connected to the existing pipe.");
+        assertTrue(newPipe.getEnds().contains(pump), "The newly placed pump should be connected to the new pipe.");
+        assertNull(mechanic.getPump(), "The mechanic should not have a pump in their inventory, after it is placed.");
     }
 }
