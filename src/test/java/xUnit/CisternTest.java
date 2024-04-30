@@ -1,12 +1,11 @@
 package xUnit;
 
 import model.Cistern;
-import model.Mechanic;
 import model.Pipe;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
 public class CisternTest {
 
@@ -14,8 +13,8 @@ public class CisternTest {
 
     private Cistern cistern;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         cistern = new Cistern();
     }
 
@@ -23,27 +22,27 @@ public class CisternTest {
      * A Mechanic should not be able to pick up a pipe from the cistern, if there is not any available.
      */
     @Test
-    void testCisternPipePickUp() {
+    public void testCisternPipePickUp() {
         Pipe pipe = cistern.takePipe();
-        assertNull(pipe, "Picking up a pipe should not be possible unless there is one available.");
+        assertNull(pipe);
     }
 
     /**
      * After a given amount of time, a new pipe should be generated.
      */
     @Test
-    void testCisternPipeGeneration() {
+    public void testCisternPipeGeneration() {
         for (int i = 0; i < PIPE_TIME; i++) {
             cistern.tick();
         }
-        assertTrue(cistern.isPipeAvailable(), "A pipe should have been generated.");
+        assertTrue(cistern.isPipeAvailable());
     }
 
     /**
      * Every tick, the cistern should take in as much water as it can from the connected pipes.
      */
     @Test
-    void testCisternDrainWater() {
+    public void testCisternDrainWater() {
         Pipe pipe1 = new Pipe();
         Pipe pipe2 = new Pipe();
         pipe1.setWaterVolume(100);
@@ -51,19 +50,19 @@ public class CisternTest {
         cistern.connect(pipe1);
         cistern.connect(pipe2);
         cistern.tick();
-        assertEquals(cistern.getDrainedWater(), 300, "The water should be drained from all connected pipes.");
+        assertEquals(cistern.getDrainedWater(), 300);
     }
 
     /**
      * After connecting a pipe to a cistern, they should be neighbours.
      */
     @Test
-    void testCisternNeighbours() {
+    public void testCisternNeighbours() {
         Pipe pipe = new Pipe();
         pipe.connect(cistern);
         cistern.connect(pipe);
-        assertTrue(cistern.hasNeighbour(pipe), "The pipe and the cistern should be neighbours, after being connected.");
+        assertTrue(cistern.hasNeighbour(pipe));
         cistern.disconnect(pipe);
-        assertFalse(cistern.hasNeighbour(pipe), "The pipe and the cistern should not be neighbours, after being disconnected.");
+        assertFalse(cistern.hasNeighbour(pipe));
     }
 }

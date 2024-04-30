@@ -2,18 +2,18 @@ package xUnit;
 
 import model.Pipe;
 import model.Saboteur;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertTrue;
 
 public class SaboteurTest {
 
     private Saboteur saboteur;
     private Pipe pipe;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         saboteur = new Saboteur();
         pipe = new Pipe();
     }
@@ -22,9 +22,9 @@ public class SaboteurTest {
       * Saboteur makes a pipe slippery. After the action the pipe should become slippery.
      */
     @Test
-    void testSaboteurMakesPipeSlippery() {
+    public void testSaboteurMakesPipeSlippery() {
         saboteur.setPosition(pipe);
         saboteur.makeSlippery(pipe);
-        assertTrue(pipe.isSlippery(), "The pipe should be slippery after the saboteur's action!");
+        assertTrue(pipe.isSlippery());
     }
 }

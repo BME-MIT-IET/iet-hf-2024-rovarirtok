@@ -1,11 +1,11 @@
 package xUnit;
 
 import model.*;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class SpringTest {
 
@@ -15,8 +15,8 @@ public class SpringTest {
     private Pipe pipe1;
     private Pipe pipe2;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         spring = new Spring();
         pipe1 = new Pipe();
         pipe2 = new Pipe();
@@ -34,17 +34,17 @@ public class SpringTest {
      * On each tick, the spring should transmit the maximum amount of water into all connected pipes.
      */
     @Test
-    void testSpringWaterFlown() {
+    public void testSpringWaterFlown() {
         spring.tick();
-        assertEquals(pipe1.getWastedWater(), PIPE_MAX, "There should be water flown from the spring to the pipe.");
-        assertEquals(pipe2.getWastedWater(), PIPE_MAX, "There should be water flown from the spring to the pipe.");
+        assertEquals(pipe1.getWastedWater(), PIPE_MAX);
+        assertEquals(pipe2.getWastedWater(), PIPE_MAX);
     }
 
     /**
      * After connecting a pipe to a spring, they should be neighbours.
      */
     @Test
-    void testSpringNeighbours() {
-        assertTrue(spring.hasNeighbour(pipe1), "The pipe and the spring should be neighbours, after being connected.");
+    public void testSpringNeighbours() {
+        assertTrue(spring.hasNeighbour(pipe1));
     }
 }
