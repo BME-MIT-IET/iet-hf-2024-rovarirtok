@@ -2,9 +2,7 @@ name: Build, Test, and Generate JaCoCo Report
 
 on:
   push:
-    branches:
-      - main
-      - unit-tests
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
