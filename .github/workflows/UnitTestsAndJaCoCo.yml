@@ -24,8 +24,7 @@ jobs:
         uses: coactions/setup-xvfb@v1
         with:
             run: |
-              mvn -B jacoco:prepare-agent package --file pom.xml --no-transfer-progress
-              mvn jacoco:report
+              mvn -B package --file pom.xml --no-transfer-progress
 
       - name: Upload JaCoCo Report
         uses: actions/upload-artifact@v2
