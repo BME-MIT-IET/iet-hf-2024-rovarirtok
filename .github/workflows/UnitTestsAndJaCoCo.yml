@@ -25,9 +25,11 @@ jobs:
         with:
             run: mvn -B package --file pom.xml --no-transfer-progress
 
-      # - name: Generate JaCoCo Report
-      #   run: mvn jacoco:report
-      #   if: always()
+      - name: Test with JaCoCo
+        run: |
+          mvn jacoco:prepare-agent test
+          mvn jacoco:report
+        if: always()
 
       - name: Upload JaCoCo Report
         uses: actions/upload-artifact@v2
