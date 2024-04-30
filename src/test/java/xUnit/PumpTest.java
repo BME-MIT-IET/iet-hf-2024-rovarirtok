@@ -108,4 +108,26 @@ public class PumpTest {
         assertTrue(pipeIn.isEmpty(), "The water from the input pipe should have been drained.");
         assertEquals(pipeOut.getWastedWater(), CURRENT_VOLUME * 2, "The water volume should equal the whole amount from the system.");
     }
+
+    /**
+     * Disconnecting a pipe from a pump
+     */
+    @Test
+    void testDisconnectPipeFromPump() {
+        assertDoesNotThrow(() -> pump.disconnect(null), "If we try to disconnect a null object from the pump, it should just return.");
+        pump.disconnect(pipeIn);
+        pump.disconnect(pipeOut);
+        assertTrue(pump.getConnectedNodes().isEmpty(), "After disconnecting all pipes, the pump should not be connected to anything.");
+    }
+
+    /**
+     * If the pump is broken, it should not transmit water on tick.
+     */
+    @Test
+    void testBrokenPumpFlow() {
+        pump.breakPump();
+        pump.tick();
+        assertFalse(pipeIn.isEmpty(), "The water from the input pipe should not have been drained.");
+        assertEquals(pipeOut.getWastedWater(), 0, "The water volume should equal 0.");
+    }
 }
