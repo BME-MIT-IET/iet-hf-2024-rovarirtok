@@ -1,10 +1,10 @@
 package xUnit;
 
 import model.*;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
 public class PipeTest {
 
@@ -13,29 +13,36 @@ public class PipeTest {
 
     private Pipe pipe;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         pipe = new Pipe();
         pipe.setMaxVolume(MAX_VOLUME);
         pipe.setWaterVolume(CURRENT_VOLUME);
     }
 
     /**
-     * Testing the setWaterVolume method of the Pipe class.
+     * Testing the setWaterVolume method of the Pipe class for negative values.
      */
-    @Test
-    void testPipeSetWaterVolume() {
-        assertThrows(IllegalArgumentException.class, () -> pipe.setWaterVolume(-1), "Setting the pipe's water volume to a negative number, should throw an error.");
-        assertThrows(IllegalArgumentException.class, () -> pipe.setWaterVolume(MAX_VOLUME + 1), "Setting the pipe's water volume to greater number than the max volume, should throw an error.");
+    @Test(expected = IllegalArgumentException.class)
+    public void testPipeSetWaterVolumeMin() {
+        pipe.setWaterVolume(-1);
+    }
+
+    /**
+     * Testing the setWaterVolume method of the Pipe class for max values.
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testPipeSetWaterVolumeMax() {
+        pipe.setWaterVolume(MAX_VOLUME + 1);
     }
 
     /**
      * Testing the setMaxVolume method of the Pipe class.
      */
     @Test
-    void testPipeSetMaxVolume() {
-        assertThrows(IllegalArgumentException.class, () -> pipe.setMaxVolume(CURRENT_VOLUME - 1), "Setting the pipe's max volume to a lower number than the current volume, should throw an error.");
-        assertThrows(IllegalArgumentException.class, () -> pipe.setMaxVolume(-1), "Setting the pipe's max volume to a negative number, should throw an error.");
+    public void testPipeSetMaxVolume() {
+        assertThrows(IllegalArgumentException.class, () -> pipe.setMaxVolume(CURRENT_VOLUME - 1));
+        assertThrows(IllegalArgumentException.class, () -> pipe.setMaxVolume(-1));
     }
 
     /**
@@ -43,11 +50,11 @@ public class PipeTest {
      * The water flown into the pipe should be wasted.
      */
     @Test
-    void testFlowIntoBrokenPipe() {
+    public void testFlowIntoBrokenPipe() {
         pipe.setWaterVolume(0);
         pipe.breakPipe();
         pipe.flow(CURRENT_VOLUME);
-        assertEquals(pipe.getWastedWater(), CURRENT_VOLUME, "The wasted water amount should equal the flown amount in case of a broken pipe.");
+        assertEquals(pipe.getWastedWater(), CURRENT_VOLUME);
     }
 
     /**
@@ -55,22 +62,22 @@ public class PipeTest {
      * The pipe should take in water matching its capacity.
      */
     @Test
-    void testFlowIntoWorkingPipe() {
+    public void testFlowIntoWorkingPipe() {
         pipe.setWaterVolume(0);
         pipe.connect(new Pump());
         pipe.connect(new Pump());
         int flownAmount = pipe.flow(CURRENT_VOLUME);
-        assertTrue(pipe.hasWaterFlown(), "The pipe should have water flown into.");
-        assertEquals(flownAmount, CURRENT_VOLUME, "The amount taken in should equal the input, if it's not more than the pipe's capacity.");
+        assertTrue(pipe.hasWaterFlown());
+        assertEquals(flownAmount, CURRENT_VOLUME);
     }
 
     /**
      * Testing if a player can step on a pipe.
      */
     @Test
-    void testPlayerStepOnPipe() {
+    public void testPlayerStepOnPipe() {
         Field place = pipe.addPlayer(new Mechanic());
-        assertEquals(place, pipe, "The player should be standing on the pipe.");
+        assertEquals(place, pipe);
     }
 
     /**
@@ -78,32 +85,32 @@ public class PipeTest {
      * This should not be possible.
      */
     @Test
-    void testMultiplePlayerStepOnPipe() {
+    public void testMultiplePlayerStepOnPipe() {
         pipe.addPlayer(new Mechanic());
         Field place = pipe.addPlayer(new Mechanic());
-        assertNull(place, "The second player should not be able to step on the pipe.");
+        assertNull(place);
     }
 
     /**
      * Connecting a pipe to a field node.
      */
     @Test
-    void testConnectingFieldNodeToPipe() {
+    public void testConnectingFieldNodeToPipe() {
         FieldNode pump = new Pump();
         pipe.setWaterVolume(0);
         boolean success = pipe.connect(pump);
-        assertTrue(success, "The pipe should have been connected to the pump.");
-        assertTrue(pipe.getEnds().contains(pump), "The pipe should have been connected to the pump.");
+        assertTrue(success);
+        assertTrue(pipe.getEnds().contains(pump));
     }
 
     /**
      * Trying to connect a pipe to a field node that has water in it.
      */
     @Test
-    void testConnectingNonEmptyPipe() {
+    public void testConnectingNonEmptyPipe() {
         boolean success = pipe.connect(new Pump());
-        assertFalse(success, "The pipe should not have been connected to the pump.");
-        assertTrue(pipe.getEnds().isEmpty(), "The pipe should not have been connected to the pump.");
+        assertFalse(success);
+        assertTrue(pipe.getEnds().isEmpty());
     }
 
     /**
@@ -111,23 +118,23 @@ public class PipeTest {
      * Connecting to more nodes should cause throwing an exception.
      */
     @Test
-    void testConnectingPipeToThreeNodes() {
+    public void testConnectingPipeToThreeNodes() {
         pipe.setWaterVolume(0);
         pipe.connect(new Pump());
         pipe.connect(new Pump());
-        assertThrows(IllegalArgumentException.class, () -> pipe.connect(new Pump()), "When connecting a third node, an exception should be thrown.");
+        assertThrows(IllegalArgumentException.class, () -> pipe.connect(new Pump()));
     }
 
     /**
      * If the pipe's current volume is zero, after a tick, it should not have any water inside.
      */
     @Test
-    void testPipeTick() {
+    public void testPipeTick() {
         Saboteur saboteur = new Saboteur();
         saboteur.makeSlippery(pipe);
         saboteur.makeSticky(pipe);
         pipe.setWaterVolume(0);
         pipe.tick();
-        assertFalse(pipe.hasWaterFlown(), "The pipe should not have any water inside.");
+        assertFalse(pipe.hasWaterFlown());
     }
 }
