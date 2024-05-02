@@ -174,7 +174,7 @@ public class Pump extends FieldNode implements Tickable {
      * Visszaadja hogy a paraméterként kapott mező szomszédja e a pumpának, azaz megtalálható
      * a pumpa csővei között, vagy nem.
      * @param field - A mező amiről eldöntjük, hogy szomszédja e a pumpának.
-     * @return igaaz, ha szomszédja, hamis, ha nem.
+     * @return igaz, ha szomszédja, hamis, ha nem.
      */
     @Override
     public boolean hasNeighbour(Field field) {
