@@ -17,7 +17,7 @@ public class CisternView extends JButton implements Viewable {
     /**
      * A ciszterna objektum, amit meg kell jeleníteni.
      */
-    private Cistern cistern;
+    private transient Cistern cistern;
     /**
      * A ciszterna pozíciója.
      */
@@ -34,7 +34,7 @@ public class CisternView extends JButton implements Viewable {
      * A ciszterna épp megjelnítendő képe.
      * Lehet normal vagy pipeAvailable.
      */
-    private Image image = normal;
+    private transient Image image = normal;
 
     /**
      * Konstruktor.

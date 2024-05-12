@@ -19,7 +19,7 @@ public class SaboteurView extends JButton implements Viewable {
     /**
      * A játékbeli megjelenítendő szabotőr.
      */
-    private Saboteur saboteur;
+    private transient Saboteur saboteur;
     /**
      * A szabotőr ikonja.
      */

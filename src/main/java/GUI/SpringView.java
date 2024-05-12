@@ -16,7 +16,7 @@ public class SpringView extends JButton implements Viewable {
     /**
      * A megjelenítendő forrás.
      */
-    private Spring spring;
+    private transient Spring spring;
     /**
      * A forrás pozíciója.
      */

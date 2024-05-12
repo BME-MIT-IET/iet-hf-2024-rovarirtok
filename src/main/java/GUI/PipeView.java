@@ -28,7 +28,7 @@ public class PipeView extends JPanel implements Viewable {
     /**
      * A cső objektum, amit meg kell jeleníteni.
      */
-    private Pipe pipe;
+    private transient Pipe pipe;
     /**
      * A csőhöz tartozó gomb.
      */
@@ -65,7 +65,7 @@ public class PipeView extends JPanel implements Viewable {
      * A cső épp megjelenítendő képe.
      * Alapértelmezetten normal.
      */
-    public Image actual = normal;
+    public transient Image actual = normal;
     /**
      * A cső színe.
      * Alapértelmezetten fekete.

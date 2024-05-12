@@ -19,7 +19,7 @@ public class MechanicView extends JButton implements Viewable {
     /**
      * A játékbeli megjelenítendő Mechanic.
      */
-    private Mechanic mechanic;
+    private transient Mechanic mechanic;
     /**
      * A Mechanic képe.
      */
