@@ -3,6 +3,7 @@ package GUI;
 import org.assertj.swing.core.GenericTypeMatcher;
 
 import model.Cistern;
+import model.Mechanic;
 import model.Pipe;
 import model.Saboteur;
 import model.Spring;
@@ -36,6 +37,11 @@ public class Utils {
         mSaboteur.moveTo(mPipe);
         SaboteurView vSaboteurView = new SaboteurView(mSaboteur);
         controller.addPlayer(mSaboteur, vSaboteurView);
+
+        Mechanic mMechanic = new Mechanic();
+        mMechanic.moveTo(mCistern);
+        MechanicView vMechanicView = new MechanicView(mMechanic);
+        controller.addPlayer(mMechanic, vMechanicView);
 
         controller.window.updateAllViews();
         controller.window.updateMenu();
