@@ -35,16 +35,18 @@ public class PlayerMoveTest extends AssertJSwingJUnitTestCase {
                 .click();
     }
 
-    // @Test
-    // public void testMechanicMove() throws InterruptedException {
-        // testSabouteurMove(); // Needed to let the mechanic move to the pipe
+    @Test
+    public void testMechanicMove() {
+        testSabouteurMove(); // Needed to let the mechanic move to the pipe
 
-        // window.button(findFirst(MechanicView.class)).click();
-        // window.panel(findFirst(PipeView.class)).click();
+        window.button(findFirst(MechanicView.class)).click();
+        window.panel(findFirst(PipeView.class)).click();
 
-        // window.button("moveButton")
-                // .requireEnabled()
-                // .requireVisible()
-                // .click();
-    // }
+        tick(Controller.instance);
+
+        window.button("moveButton")
+                .requireEnabled()
+                .requireVisible()
+                .click();
+    }
 }
