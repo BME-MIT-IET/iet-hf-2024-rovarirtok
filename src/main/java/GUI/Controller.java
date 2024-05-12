@@ -10,11 +10,16 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Set;
+import java.util.logging.*;
 
 /**
  * A játék irányításáért, a játék logikája és a megjelenítés közti kommunikáció biztosításáért felelős osztály.
  */
 public class Controller {
+    /**
+     * A naplózásért felelős logger.
+     */
+    private static final Logger LOGGER = Logger.getLogger(Controller.class.getName());
     /**
      * A játék irányításáért felelős osztály egyetlen példánya.
      */
@@ -172,8 +177,7 @@ public class Controller {
             try {
                 mechanic.connectPipe((Pipe) selectedPlayer.getPosition(), (FieldNode) selectedFields.get(0));
             } catch (Exception e) {
-                System.err.println("An error occurred: " + e.getMessage());
-                e.printStackTrace();
+                LOGGER.log(Level.SEVERE, e.getMessage(), e);
             }
             endAction();
         }
@@ -450,7 +454,8 @@ public class Controller {
                     Controller.instance.window.updateMenu();
                     Thread.sleep(1000);
                 }
-            } catch (Exception e) {
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
                 throw new IllegalArgumentException("An error occurred in the controller", e);
             }
         }).start();
