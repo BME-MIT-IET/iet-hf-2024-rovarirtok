@@ -11,7 +11,7 @@ public class ImageLoader {
         final var imageUrl = ImageLoader.class.getResource(imagePath);
 
         if (imageUrl == null) {
-            throw new RuntimeException("Image not found: " + imagePath);
+            throw new IllegalArgumentException("Image not found: " + imagePath);
         }
 
         return imageUrl;

@@ -25,8 +25,6 @@ public class SpringView extends JButton implements Viewable {
      * A forrás képe.
      */
     private static Image image = new ImageIcon(ImageLoader.loadImage("spring.png")).getImage();
-    // private static Image normal_rollover = new ImageIcon(Controller.assetsPath +
-    // "spring_rollover.png").getImage();
     /**
      * Konstruktor.
      * @param position A megjelenítendő forrás pozíciója.
