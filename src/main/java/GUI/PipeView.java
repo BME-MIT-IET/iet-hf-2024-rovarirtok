@@ -203,9 +203,7 @@ public class PipeView extends JPanel implements Viewable {
      */
     private class PipeButton extends JButton {
         public PipeButton() {
-            this.addActionListener((ActionEvent e) -> {
-                Controller.instance.selectField(pipe);
-            });
+            this.addActionListener((ActionEvent e) -> Controller.instance.selectField(pipe));
 
             this.addMouseMotionListener(new MouseMotionListener() {
                 private Point start = null;
