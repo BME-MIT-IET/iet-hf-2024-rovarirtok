@@ -33,9 +33,7 @@ public class MechanicView extends JButton implements Viewable {
 
         this.mechanic = mechanic;
 
-        this.addActionListener((ActionEvent e) -> {
-            Controller.instance.selectPlayer(this.mechanic);
-        });
+        this.addActionListener((ActionEvent e) -> Controller.instance.selectPlayer(this.mechanic));
 
         Point position = getPosition();
         this.setBounds(position.x, position.y, SIZE, SIZE);
