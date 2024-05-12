@@ -34,27 +34,13 @@ public class PlayerMoveTest extends AssertJSwingJUnitTestCase {
 
     @Test
     public void testMechanicMove() {
-        // Move saboteur to the Spring
-        window.button(findFirst(SaboteurView.class)).click();
-        window.button(findFirst(SpringView.class)).click();
-        window.button("moveButton")
-                .requireEnabled()
-                .requireVisible()
-                .click();
-
+        testSabouteurMove(); // Needed to move saboteur away
         window.button(findFirst(MechanicView.class)).click();
-        window.panel(findFirst(PipeView.class)).click();
+        window.panel(findFirst(PipeView.class)).button().click();
 
         window.button("moveButton")
                 .requireEnabled()
                 .requireVisible()
                 .click();
-        
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
     }
 }
