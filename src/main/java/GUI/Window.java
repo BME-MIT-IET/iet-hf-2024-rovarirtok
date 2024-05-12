@@ -28,7 +28,7 @@ public class Window extends JFrame {
     /**
      * A játékfelület háttere (sivatag)
      */
-    private static Image background = new ImageIcon(ImageLoader.loadImage("background.png")).getImage();
+    private static Image backgroundImageIcon = new ImageIcon(ImageLoader.loadImage("background.png")).getImage();
     /**
      * A megjelenítendő objektumok tárolója
      */
@@ -53,7 +53,7 @@ public class Window extends JFrame {
     private JLayeredPane map = new JLayeredPane() {
         @Override
         public void paintComponent(Graphics g) {
-            getGraphics2D(g).drawImage(background, 0, 0, Window.WIDTH, Window.HEIGHT, null);
+            getGraphics2D(g).drawImage(backgroundImageIcon, 0, 0, Window.WIDTH, Window.HEIGHT, null);
         }
     };
 

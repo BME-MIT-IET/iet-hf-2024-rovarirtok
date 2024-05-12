@@ -16,7 +16,7 @@ public class MenuPanel extends JPanel {
     /**
      * A menüpanel háttérképe.
      */
-    private static Image backgroundImage = new ImageIcon(ImageLoader.loadImage("panel.png")).getImage();
+    private static Image backgroundImageIcon = new ImageIcon(ImageLoader.loadImage("panel.png")).getImage();
     /**
      * Az akciókat reprezentáló akciópanel.
      */
@@ -59,7 +59,7 @@ public class MenuPanel extends JPanel {
      */
     @Override
     public void paintComponent(Graphics g) {
-        Window.getGraphics2D(g).drawImage(backgroundImage, -10, -10, getWidth() + 50, getHeight() + 20, null);
+        Window.getGraphics2D(g).drawImage(backgroundImageIcon, -10, -10, getWidth() + 50, getHeight() + 20, null);
     }
 
     /**
