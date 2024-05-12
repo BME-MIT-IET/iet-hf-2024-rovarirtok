@@ -1,7 +1,6 @@
 package GUI;
 
 import model.*;
-import model.Spring;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -173,6 +172,8 @@ public class Controller {
             try {
                 mechanic.connectPipe((Pipe) selectedPlayer.getPosition(), (FieldNode) selectedFields.get(0));
             } catch (Exception e) {
+                System.err.println("An error occurred: " + e.getMessage());
+                e.printStackTrace();
             }
             endAction();
         }
@@ -449,8 +450,8 @@ public class Controller {
                     Controller.instance.window.updateMenu();
                     Thread.sleep(1000);
                 }
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+            } catch (Exception e) {
+                throw new IllegalArgumentException("An error occurred in the controller", e);
             }
         }).start();
     }
