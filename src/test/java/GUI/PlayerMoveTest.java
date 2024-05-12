@@ -1,6 +1,7 @@
 package GUI;
 
 import static GUI.Utils.findFirst;
+import static org.junit.Assert.assertNotNull;
 
 import org.assertj.swing.edt.GuiActionRunner;
 import org.assertj.swing.fixture.FrameFixture;
@@ -26,10 +27,11 @@ public class PlayerMoveTest extends AssertJSwingJUnitTestCase {
         window.button(findFirst(SaboteurView.class)).click();
         window.button(findFirst(SpringView.class)).click();
 
-        window.button("moveButton")
-                .requireEnabled()
-                .requireVisible()
-                .click();
+        assertNotNull(
+                window.button("moveButton")
+                        .requireEnabled()
+                        .requireVisible()
+                        .click());
     }
 
     @Test
@@ -38,9 +40,10 @@ public class PlayerMoveTest extends AssertJSwingJUnitTestCase {
         window.button(findFirst(MechanicView.class)).click();
         window.panel(findFirst(PipeView.class)).button().click();
 
-        window.button("moveButton")
-                .requireEnabled()
-                .requireVisible()
-                .click();
+        assertNotNull(
+                window.button("moveButton")
+                        .requireEnabled()
+                        .requireVisible()
+                        .click());
     }
 }

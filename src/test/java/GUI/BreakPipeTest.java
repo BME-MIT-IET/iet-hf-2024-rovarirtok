@@ -1,5 +1,8 @@
 package GUI;
 
+import static GUI.Utils.tick;
+import static org.junit.Assert.assertTrue;
+
 import org.assertj.swing.edt.GuiActionRunner;
 import org.assertj.swing.fixture.FrameFixture;
 import org.assertj.swing.junit.testcase.AssertJSwingJUnitTestCase;
@@ -25,5 +28,9 @@ public class BreakPipeTest extends AssertJSwingJUnitTestCase {
                 .requireEnabled()
                 .requireVisible()
                 .click();
+        tick(Controller.instance);
+
+        int saboteurScore = Integer.parseInt(window.label("saboteurScore").text());
+        assertTrue(0 < saboteurScore);
     }
 }

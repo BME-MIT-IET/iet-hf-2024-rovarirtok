@@ -5,6 +5,7 @@ import static GUI.Utils.initTestGame;
 import static GUI.Utils.tick;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.awt.Point;
@@ -33,8 +34,8 @@ public class InitalGameStateTest extends AssertJSwingJUnitTestCase {
     public void testInitalScores() {
         int mechanicScore = Integer.parseInt(window.label("mechanicScore").text());
         int saboteurScore = Integer.parseInt(window.label("saboteurScore").text());
-        assertEquals(mechanicScore, 0);
-        assertEquals(saboteurScore, 0);
+        assertEquals(0, mechanicScore);
+        assertEquals(0, saboteurScore);
     }
 
     @Test
@@ -57,8 +58,7 @@ public class InitalGameStateTest extends AssertJSwingJUnitTestCase {
     @Test
     public void testWaterFlow() {
         tick(Controller.instance);
-
-        window.panel(findFirst(PipeView.class, p -> p.hasWaterFlown())).requireVisible();
+        assertNotNull(window.panel(findFirst(PipeView.class, p -> p.hasWaterFlown())).requireVisible());
     }
 
     @Test
