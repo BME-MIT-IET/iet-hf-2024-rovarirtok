@@ -2,12 +2,10 @@ package GUI.menu;
 
 import javax.swing.*;
 
-import GUI.Controller;
 import GUI.Window;
 import GUI.init.ImageLoader;
 
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 

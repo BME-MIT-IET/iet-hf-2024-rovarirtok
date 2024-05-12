@@ -4,7 +4,7 @@ package model;
  * A forrásokért felelős osztály
  * A rendszert, pontosabban a belőle kivezető csöveket látja el vízzel
  */
-public class Spring extends FieldNode implements Tickable {
+public class Spring extends FieldNode {
     /**
      * Konstruktor
      */

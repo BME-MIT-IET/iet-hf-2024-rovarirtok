@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * A Pump osztálya.
  */
-public class Pump extends FieldNode implements Tickable {
+public class Pump extends FieldNode {
     /**
      * A random számok generálásához használt objektum.
      */
