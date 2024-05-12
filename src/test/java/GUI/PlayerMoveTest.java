@@ -1,7 +1,6 @@
 package GUI;
 
 import static GUI.Utils.findFirst;
-import static GUI.Utils.tick;
 
 import org.assertj.swing.edt.GuiActionRunner;
 import org.assertj.swing.fixture.FrameFixture;
@@ -19,21 +18,13 @@ public class PlayerMoveTest extends AssertJSwingJUnitTestCase {
         });
         window = new FrameFixture(robot(), frame);
         window.show();
-
-        // Move saboteur to the Spring
-        window.button(findFirst(SaboteurView.class)).click();
-        window.button(findFirst(SpringView.class)).click();
-        window.button("moveButton")
-                .requireEnabled()
-                .requireVisible()
-                .click();
     }
 
     
     @Test
     public void testSabouteurMove() {
         window.button(findFirst(SaboteurView.class)).click();
-        window.panel(findFirst(PipeView.class)).click();
+        window.button(findFirst(SpringView.class)).click();
 
         window.button("moveButton")
                 .requireEnabled()
@@ -43,14 +34,27 @@ public class PlayerMoveTest extends AssertJSwingJUnitTestCase {
 
     @Test
     public void testMechanicMove() {
+        // Move saboteur to the Spring
+        window.button(findFirst(SaboteurView.class)).click();
+        window.button(findFirst(SpringView.class)).click();
+        window.button("moveButton")
+                .requireEnabled()
+                .requireVisible()
+                .click();
+
         window.button(findFirst(MechanicView.class)).click();
         window.panel(findFirst(PipeView.class)).click();
-
-        tick(Controller.instance);
 
         window.button("moveButton")
                 .requireEnabled()
                 .requireVisible()
                 .click();
+        
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }
