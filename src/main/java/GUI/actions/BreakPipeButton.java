@@ -18,6 +18,7 @@ public class BreakPipeButton extends ActionButton {
     public BreakPipeButton() {
         super();
 
+        this.setName("breakPipeButton");
         this.setContentAreaFilled(false);
         this.setRolloverEnabled(true);
         this.setContentAreaFilled(false);

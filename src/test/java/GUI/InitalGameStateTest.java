@@ -1,9 +1,11 @@
 package GUI;
 
 import static GUI.Utils.findFirst;
-
+import static GUI.Utils.initTestGame;
+import static GUI.Utils.tick;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.Point;
 
@@ -20,7 +22,7 @@ public class InitalGameStateTest extends AssertJSwingJUnitTestCase {
     public void onSetUp() {
         Window frame = GuiActionRunner.execute(() -> {
             Controller.instance = new Controller();
-            Controller.instance.initModel();
+            initTestGame(Controller.instance);
             return Controller.instance.window;
         });
         window = new FrameFixture(robot(), frame);
@@ -54,10 +56,27 @@ public class InitalGameStateTest extends AssertJSwingJUnitTestCase {
 
     @Test
     public void testWaterFlow() {
-        Controller.instance.tick();
-        Controller.instance.window.updateAllViews();
-        Controller.instance.window.updateMenu();
+        tick(Controller.instance);
 
         window.panel(findFirst(PipeView.class, p -> p.hasWaterFlown())).requireVisible();
+    }
+
+    @Test
+    public void testMechanicPoints() {
+        tick(Controller.instance);
+
+        int mechanicScore = Integer.parseInt(window.label("mechanicScore").text());
+        assertTrue(0 < mechanicScore);
+    }
+
+    @Test
+    public void testSaboteurPoints() {
+        window.button(findFirst(SaboteurView.class)).click();
+        window.button("breakPipeButton").click();
+
+        tick(Controller.instance);
+
+        int saboteurScore = Integer.parseInt(window.label("saboteurScore").text());
+        assertTrue(0 < saboteurScore);
     }
 }
