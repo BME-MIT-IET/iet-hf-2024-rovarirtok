@@ -4,10 +4,10 @@ import java.net.URL;
 
 public class ImageLoader {
 
-    private static final String assetsPath = "/assets/";
+    private static final String ASSETS_PATH = "/assets/";
 
     public static URL loadImage(String imageName) {
-        final var imagePath = assetsPath + imageName;
+        final var imagePath = ASSETS_PATH + imageName;
         final var imageUrl = ImageLoader.class.getResource(imagePath);
 
         if (imageUrl == null) {
