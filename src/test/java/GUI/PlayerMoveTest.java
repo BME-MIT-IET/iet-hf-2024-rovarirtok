@@ -1,6 +1,7 @@
 package GUI;
 
 import static GUI.Utils.findFirst;
+import static GUI.Utils.tick;
 
 import org.assertj.swing.edt.GuiActionRunner;
 import org.assertj.swing.fixture.FrameFixture;
@@ -25,6 +26,9 @@ public class PlayerMoveTest extends AssertJSwingJUnitTestCase {
     public void testSabouteurMove() {
         window.button(findFirst(SaboteurView.class)).click();
         window.button(findFirst(SpringView.class)).click();
+
+        tick(Controller.instance);
+
         window.button("moveButton")
                 .requireEnabled()
                 .requireVisible()
@@ -32,11 +36,14 @@ public class PlayerMoveTest extends AssertJSwingJUnitTestCase {
     }
 
     @Test
-    public void testMechanicMove() {
+    public void testMechanicMove() throws InterruptedException {
         testSabouteurMove(); // Needed to let the mechanic move to the pipe
 
         window.button(findFirst(MechanicView.class)).click();
         window.panel(findFirst(PipeView.class)).click();
+
+        tick(Controller.instance);
+
         window.button("moveButton")
                 .requireEnabled()
                 .requireVisible()
