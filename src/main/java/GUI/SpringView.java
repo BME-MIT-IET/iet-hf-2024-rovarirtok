@@ -38,9 +38,7 @@ public class SpringView extends JButton implements Viewable {
         this.spring = spring;
         this.position = position;
 
-        this.addActionListener((ActionEvent e) -> {
-            Controller.instance.selectField(spring);
-        });
+        this.addActionListener((ActionEvent e) -> Controller.instance.selectField(spring));
 
         this.addMouseMotionListener(new MouseMotionListener() {
             private Point start = null;
