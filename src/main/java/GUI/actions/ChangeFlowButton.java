@@ -26,9 +26,7 @@ public class ChangeFlowButton extends ActionButton {
         this.setBorderPainted(false);
         this.setFocusPainted(false);
         this.setText("CHANGE FLOW");
-        this.addActionListener((ActionEvent e) -> {
-            Controller.instance.changeFlow();
-        });
+        this.addActionListener((ActionEvent e) -> Controller.instance.changeFlow());
     }
     /**
      * Metódus, ami megmondja, hogy a gomb használható, megjeleníthető-e.
