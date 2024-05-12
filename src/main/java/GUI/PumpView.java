@@ -45,9 +45,7 @@ public class PumpView extends JButton implements Viewable {
         this.pump = pump;
         this.position = position;
 
-        this.addActionListener((ActionEvent e) -> {
-            Controller.instance.selectField(this.pump);
-        });
+        this.addActionListener((ActionEvent e) -> Controller.instance.selectField(this.pump));
 
         this.addMouseMotionListener(new MouseMotionListener() {
             private Point start = null;
