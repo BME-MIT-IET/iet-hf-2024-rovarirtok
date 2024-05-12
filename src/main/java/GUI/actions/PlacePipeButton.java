@@ -23,9 +23,7 @@ public class PlacePipeButton extends ActionButton {
         this.setBorderPainted(false);
         this.setFocusPainted(false);
         this.setText("PLACE PIPE");
-        this.addActionListener((ActionEvent e) -> {
-            Controller.instance.placePipe();
-        });
+        this.addActionListener((ActionEvent e) -> Controller.instance.placePipe());
     }
     /**
      * Metódus, ami megmondja, hogy a gomb használható, megjeleníthető-e.

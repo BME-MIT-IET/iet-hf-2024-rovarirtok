@@ -23,9 +23,7 @@ public class MoveButton extends ActionButton {
         this.setBorderPainted(false);
         this.setFocusPainted(false);
         this.setText("MOVE");
-        this.addActionListener((ActionEvent e) -> {
-            Controller.instance.movePlayer();
-        });
+        this.addActionListener((ActionEvent e) -> Controller.instance.movePlayer());
     }
     /**
      * Metódus, ami megmondja, hogy a gomb használható, megjeleníthető-e.

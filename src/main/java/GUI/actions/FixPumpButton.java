@@ -24,9 +24,7 @@ public class FixPumpButton extends ActionButton {
         this.setBorderPainted(false);
         this.setFocusPainted(false);
         this.setText("FIX PUMP");
-        this.addActionListener((ActionEvent e) -> {
-            Controller.instance.fixPump();
-        });
+        this.addActionListener((ActionEvent e) -> Controller.instance.fixPump());
     }
     /**
      * Metódus, ami megmondja, hogy a gomb használható, megjeleníthető-e.
