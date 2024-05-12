@@ -1,20 +1,19 @@
 package GUI;
 
+import static GUI.Utils.findFirst;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 import java.awt.Point;
 
-import javax.swing.JPanel;
-
-import org.assertj.swing.core.GenericTypeMatcher;
 import org.assertj.swing.edt.GuiActionRunner;
 import org.assertj.swing.fixture.FrameFixture;
 import org.assertj.swing.fixture.JButtonFixture;
 import org.assertj.swing.junit.testcase.AssertJSwingJUnitTestCase;
 import org.junit.Test;
 
-public class InitalUITest extends AssertJSwingJUnitTestCase {
+public class InitalGameStateTest extends AssertJSwingJUnitTestCase {
     private FrameFixture window;
 
     @Override
@@ -39,18 +38,7 @@ public class InitalUITest extends AssertJSwingJUnitTestCase {
     @Test
     public void canMovePipe() {
         JButtonFixture pipe = window
-                .panel(new GenericTypeMatcher<JPanel>(JPanel.class, false) {
-                    private boolean first = true;
-
-                    @Override
-                    protected boolean isMatching(JPanel p) {
-                        if (p instanceof PipeView && first) {
-                            first = false;
-                            return true;
-                        }
-                        return false;
-                    }
-                })
+                .panel(findFirst(PipeView.class))
                 .button();
 
         Point beforeMove = pipe.target().getLocation();
