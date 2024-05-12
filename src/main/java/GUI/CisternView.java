@@ -8,8 +8,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
-import java.io.IOException;
-import java.net.URL;
 
 /**
  * A Ciszterna megjelenítéséért felelős osztály.
@@ -38,19 +36,6 @@ public class CisternView extends JButton implements Viewable {
      */
     private Image image = normal;
 
-//    static {
-//        try {
-//            URL imageUrl = CisternView.class.getResource(Controller.assetsPath + "cistern.png");
-//            if(imageUrl == null) {
-//                throw new IOException("Image file not found");
-//            }
-//
-//            normal = new ImageIcon(imageUrl).getImage();
-//        } catch (IOException e) {
-//            throw new RuntimeException("Error loading image", e);
-//        }
-//    }
-
     /**
      * Konstruktor.
      * @param position A ciszterna pozíciója.
@@ -62,9 +47,7 @@ public class CisternView extends JButton implements Viewable {
         this.cistern = cistern;
         this.position = position;
 
-        this.addActionListener((ActionEvent e) -> {
-            Controller.instance.selectField(cistern);
-        });
+        this.addActionListener((ActionEvent e) -> Controller.instance.selectField(cistern));
 
         this.addMouseMotionListener(new MouseMotionListener() {
             private Point start = null;
