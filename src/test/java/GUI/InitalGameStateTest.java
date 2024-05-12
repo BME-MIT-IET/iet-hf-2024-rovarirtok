@@ -51,4 +51,13 @@ public class InitalGameStateTest extends AssertJSwingJUnitTestCase {
 
         assertNotEquals(afterMove, beforeMove);
     }
+
+    @Test
+    public void testWaterFlow() {
+        Controller.instance.tick();
+        Controller.instance.window.updateAllViews();
+        Controller.instance.window.updateMenu();
+
+        window.panel(findFirst(PipeView.class, p -> p.hasWaterFlown())).requireVisible();
+    }
 }

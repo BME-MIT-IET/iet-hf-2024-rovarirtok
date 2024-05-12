@@ -107,6 +107,11 @@ public class PipeView extends JPanel implements Viewable {
     public void setWasCut(boolean value) {
         wasCut = value;
     }
+
+    public boolean hasWaterFlown() {
+        return pipe.hasWaterFlown();
+    }
+
     /**
      * Frissíti a cső megjelenítését a modellbeli állapotának megfelelően.
      * A cső lehet normál, csúszós, ragacsos, törött, csúszós és törött, ragacsos és törött.
