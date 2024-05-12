@@ -17,6 +17,7 @@ public class MoveButton extends ActionButton {
     public MoveButton() {
         super();
 
+        this.setName("moveButton");
         this.setContentAreaFilled(false);
         this.setRolloverEnabled(true);
         this.setContentAreaFilled(false);

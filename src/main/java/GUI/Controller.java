@@ -19,7 +19,7 @@ public class Controller {
     /**
      * A játék irányításáért felelős osztály egyetlen példánya.
      */
-    public static Controller instance = new Controller();
+    public static Controller instance;
     /**
      * A játék megjelenítéséért felelős ablak.
      */
@@ -438,6 +438,7 @@ public class Controller {
      * A cselekvések között frissíti a nézeteket, majd vár egy másodpercet, mielőtt újra futna.
      */
     public static void main(String args[]) {
+        Controller.instance = new Controller();
         Controller.instance.initModel();
         new Thread(() -> {
             try {

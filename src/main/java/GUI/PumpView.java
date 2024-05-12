@@ -41,7 +41,6 @@ public class PumpView extends JButton implements Viewable {
      */
     public PumpView(Point position, Pump pump) {
         super();
-
         this.pump = pump;
         this.position = position;
 
