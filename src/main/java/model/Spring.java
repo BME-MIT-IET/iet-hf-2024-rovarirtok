@@ -9,8 +9,9 @@ public class Spring extends FieldNode {
      * Konstruktor
      */
     public Spring() {
+        // This constructor is intentionally left empty
+        // The Spring class does not require any specific initialization logic
     }
-
     /**
      * Egy időegység elteltét jelenti.
      * A forráshoz kapcsolt csövekbe a lehető legtöbb vizet folyatja a forrásból.
