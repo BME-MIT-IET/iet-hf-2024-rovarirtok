@@ -42,8 +42,7 @@ public class InventoryPanel extends JPanel {
             g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-            int w = getWidth();
-            int h = getHeight();
+            int w = getWidth(), h = getHeight();
             g2d.drawImage(pipeImage, 0, 0, w, h, null);
             if (this.getModel().isRollover() || !isEnabled()) {
                 g.setColor(new Color(0, 0, 0, 50));

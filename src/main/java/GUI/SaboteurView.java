@@ -15,7 +15,7 @@ public class SaboteurView extends JButton implements Viewable {
     /**
      * A megjelenített szabotőr ikon mérete.
      */
-    private static final int SIZE = (int) (Window.BUTTONSIZE * 0.6);
+    private static int SIZE = (int) (Window.BUTTONSIZE * 0.6);
     /**
      * A játékbeli megjelenítendő szabotőr.
      */
@@ -23,7 +23,7 @@ public class SaboteurView extends JButton implements Viewable {
     /**
      * A szabotőr ikonja.
      */
-    public static final Image image = new ImageIcon(ImageLoader.loadImage("saboteur.png")).getImage();
+    public static Image image = new ImageIcon(ImageLoader.loadImage("saboteur.png")).getImage();
     /**
      * Konstruktor.
      * @param saboteur A megjelenítendő szabotőr.
@@ -51,12 +51,12 @@ public class SaboteurView extends JButton implements Viewable {
         Field field = saboteur.getPosition();
 
         double index = field.getPlayerIndex(saboteur);
-        double dx = Math.cos(index * Math.PI / 2.0) * Window.BUTTONSIZE / 2;
-        double dy = Math.sin(index * Math.PI / 2.0) * Window.BUTTONSIZE / 2;
+        double dx = Math.cos(index * Math.PI / 2.0) * Window.BUTTONSIZE / 2,
+                dy = Math.sin(index * Math.PI / 2.0) * Window.BUTTONSIZE / 2;
 
         Point position = Controller.instance.fields.get(field).getPosition();
-        int cx = position.x + Window.BUTTONSIZE / 2;
-        int cy = position.y + Window.BUTTONSIZE / 2;
+        int cx = position.x + Window.BUTTONSIZE / 2,
+                cy = position.y + Window.BUTTONSIZE / 2;
 
         return new Point(cx + (int) dx - SIZE / 2, cy + (int) dy - SIZE / 2);
     }
@@ -79,8 +79,7 @@ public class SaboteurView extends JButton implements Viewable {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        int w = getWidth();
-        int h = getHeight();
+        int w = getWidth(), h = getHeight();
 
         boolean isSelected = Controller.instance.selectedPlayer == saboteur;
         if (isSelected) {

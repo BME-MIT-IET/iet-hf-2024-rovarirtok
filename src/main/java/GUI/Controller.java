@@ -31,7 +31,7 @@ public class Controller {
     /**
      * A pontszám, amely elérése szükséges a játék megnyeréséért.
      */
-    public static final int MAX_SCORE = 100;
+    public static int MAX_SCORE = 100;
     /**
      * A játékban résztvevő játékosokat tároló hash map.
      */
@@ -272,7 +272,7 @@ public class Controller {
         // Contains all of the fields that have
         // been ticked so we don't tick a field twice
         Set<FieldNode> ticked = new HashSet<>();
-        while (!toSee.isEmpty()) {
+        while (0 < toSee.size()) {
             FieldNode node = toSee.poll();
             node.tick();
             ticked.add(node);

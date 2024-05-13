@@ -57,8 +57,7 @@ public class CisternView extends JButton implements Viewable {
              */
             @Override
             public void mouseDragged(MouseEvent e) {
-                int dx = e.getX() - start.x;
-                int dy = e.getY() - start.y;
+                int dx = e.getX() - start.x, dy = e.getY() - start.y;
                 ((CisternView)e.getComponent()).setPosition(new Point(getPosition().x + dx, getPosition().y + dy));
                 Controller.instance.window.updateAllViews();
             }
@@ -113,8 +112,7 @@ public class CisternView extends JButton implements Viewable {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        int w = getWidth();
-        int h = getHeight();
+        int w = getWidth(), h = getHeight();
         boolean isSelected = Controller.instance.selectedFields.contains(cistern);
         if (isSelected) {
             g.setColor(Color.GREEN);
