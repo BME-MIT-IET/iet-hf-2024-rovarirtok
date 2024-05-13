@@ -48,19 +48,19 @@ public class PipeView extends JPanel implements Viewable {
     /**
      * A cső csúszós és törött állapotbeli képe.
      */
-    private static Image slippery_broken = new ImageIcon(ImageLoader.loadImage("pipe_slippery_broken.png")).getImage();
+    private static Image slipperyBroken = new ImageIcon(ImageLoader.loadImage("pipe_slippery_broken.png")).getImage();
     /**
      * A cső csúszós és normal, azaz nem törött állapotbeli képe.
      */
-    private static Image slippery_normal = new ImageIcon(ImageLoader.loadImage("pipe_slippery.png")).getImage();
+    private static Image slipperyNormal = new ImageIcon(ImageLoader.loadImage("pipe_slippery.png")).getImage();
     /**
      * A cső ragacsos és törött állapotbeli képe.
      */
-    private static Image sticky_broken = new ImageIcon(ImageLoader.loadImage("pipe_sticky_broken.png")).getImage();
+    private static Image stickyBroken = new ImageIcon(ImageLoader.loadImage("pipe_sticky_broken.png")).getImage();
     /**
      * A cső ragacsos és normal, azaz nem törött állapotbeli képe.
      */
-    private static Image sticky_normal = new ImageIcon(ImageLoader.loadImage("pipe_sticky.png")).getImage();
+    private static Image stickyNormal = new ImageIcon(ImageLoader.loadImage("pipe_sticky.png")).getImage();
     /**
      * A cső épp megjelenítendő képe.
      * Alapértelmezetten normal.
@@ -124,17 +124,17 @@ public class PipeView extends JPanel implements Viewable {
         boolean sticky = pipe.isSticky();
         if (isBroken) {
             if (slippery) {
-                actual = slippery_broken;
+                actual = slipperyBroken;
             } else if (sticky) {
-                actual = sticky_broken;
+                actual = stickyBroken;
             } else {
                 actual = broken;
             }
         } else {
             if (slippery) {
-                actual = slippery_normal;
+                actual = slipperyNormal;
             } else if (sticky) {
-                actual = sticky_normal;
+                actual = stickyNormal;
             } else {
                 actual = normal;
             }
