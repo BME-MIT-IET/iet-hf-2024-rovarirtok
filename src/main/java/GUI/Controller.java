@@ -31,7 +31,7 @@ public class Controller {
     /**
      * A pontszám, amely elérése szükséges a játék megnyeréséért.
      */
-    public static int MAX_SCORE = 100;
+    public static final int MAX_SCORE = 100;
     /**
      * A játékban résztvevő játékosokat tároló hash map.
      */

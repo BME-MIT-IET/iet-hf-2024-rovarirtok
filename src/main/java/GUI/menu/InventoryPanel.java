@@ -82,7 +82,6 @@ public class InventoryPanel extends JPanel {
         super();
         this.setOpaque(false);
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        // this.setBorder(new EmptyBorder(2, 0, 0, 0));
 
         JLabel title = new JLabel("Inventory");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);

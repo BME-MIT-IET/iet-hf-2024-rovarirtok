@@ -15,7 +15,7 @@ public class MechanicView extends JButton implements Viewable {
     /**
      * A megjelnített Mechanic képének mérete.
      */
-    private static int SIZE = (int) (Window.BUTTONSIZE * 0.6);
+    private static final int SIZE = (int) (Window.BUTTONSIZE * 0.6);
     /**
      * A játékbeli megjelenítendő Mechanic.
      */
