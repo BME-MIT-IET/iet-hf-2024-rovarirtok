@@ -1,9 +1,9 @@
-package GUI.menu;
+package gui.menu;
 
 import javax.swing.*;
 
-import GUI.Window;
-import GUI.init.ImageLoader;
+import gui.Window;
+import gui.init.ImageLoader;
 
 import java.awt.*;
 import java.io.IOException;

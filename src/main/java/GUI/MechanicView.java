@@ -1,10 +1,12 @@
-package GUI;
+package gui;
 
-import GUI.init.ImageLoader;
 import model.Field;
 import model.Mechanic;
 
 import javax.swing.*;
+
+import gui.init.ImageLoader;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 /**

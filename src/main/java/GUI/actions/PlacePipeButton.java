@@ -1,8 +1,8 @@
-package GUI.actions;
+package gui.actions;
 
 import java.awt.event.ActionEvent;
 
-import GUI.Controller;
+import gui.Controller;
 import model.FieldNode;
 import model.Mechanic;
 import model.Player;

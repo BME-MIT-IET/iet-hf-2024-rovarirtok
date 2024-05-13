@@ -1,4 +1,4 @@
-package GUI.menu;
+package gui.menu;
 
 import java.awt.Component;
 import java.awt.Image;
@@ -10,9 +10,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import GUI.Controller;
-import GUI.Window;
-import GUI.init.ImageLoader;
+import gui.Controller;
+import gui.Window;
+import gui.init.ImageLoader;
 
 /**
  * A csapatok pontszámát reprezentáló panel.

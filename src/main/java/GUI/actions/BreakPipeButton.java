@@ -1,8 +1,8 @@
-package GUI.actions;
+package gui.actions;
 
 import java.awt.event.ActionEvent;
 
-import GUI.Controller;
+import gui.Controller;
 import model.Field;
 import model.Pipe;
 import model.Player;

@@ -1,9 +1,9 @@
-package GUI;
+package gui;
 
 import javax.swing.*;
 
-import GUI.init.ImageLoader;
-import GUI.menu.MenuPanel;
+import gui.init.ImageLoader;
+import gui.menu.MenuPanel;
 
 import java.awt.*;
 import java.awt.event.WindowEvent;

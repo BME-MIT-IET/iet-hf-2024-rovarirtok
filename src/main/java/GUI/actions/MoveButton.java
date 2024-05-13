@@ -1,9 +1,9 @@
-package GUI.actions;
+package gui.actions;
 
 import java.awt.event.ActionEvent;
 import java.util.List;
 
-import GUI.Controller;
+import gui.Controller;
 import model.Field;
 import model.Player;
 /**

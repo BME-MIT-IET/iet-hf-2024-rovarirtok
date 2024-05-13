@@ -1,9 +1,11 @@
-package GUI;
+package gui;
 
-import GUI.init.ImageLoader;
 import model.Pump;
 
 import javax.swing.*;
+
+import gui.init.ImageLoader;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;

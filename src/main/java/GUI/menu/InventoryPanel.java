@@ -1,4 +1,4 @@
-package GUI.menu;
+package gui.menu;
 
 import java.awt.*;
 
@@ -7,11 +7,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import GUI.Controller;
-import GUI.Window;
-import GUI.actions.PlacePipeButton;
-import GUI.actions.PlacePumpButton;
-import GUI.init.ImageLoader;
+import gui.Controller;
+import gui.Window;
+import gui.actions.PlacePipeButton;
+import gui.actions.PlacePumpButton;
+import gui.init.ImageLoader;
 import model.Mechanic;
 
 /**

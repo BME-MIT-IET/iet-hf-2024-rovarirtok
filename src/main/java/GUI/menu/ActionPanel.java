@@ -1,4 +1,4 @@
-package GUI.menu;
+package gui.menu;
 
 import java.awt.*;
 
@@ -6,7 +6,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import GUI.actions.*;
+import gui.actions.*;
 
 /**
  * Az akciókat reprezentáló panel.

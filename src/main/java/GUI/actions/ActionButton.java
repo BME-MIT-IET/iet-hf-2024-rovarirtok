@@ -1,4 +1,4 @@
-package GUI.actions;
+package gui.actions;
 
 import javax.swing.JButton;
 import java.awt.*;
