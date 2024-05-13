@@ -36,8 +36,8 @@ public class SpringTest {
     @Test
     public void testSpringWaterFlown() {
         spring.tick();
-        assertEquals(pipe1.getWastedWater(), PIPE_MAX);
-        assertEquals(pipe2.getWastedWater(), PIPE_MAX);
+        assertEquals(PIPE_MAX, pipe1.getWastedWater());
+        assertEquals(PIPE_MAX, pipe2.getWastedWater());
     }
 
     /**

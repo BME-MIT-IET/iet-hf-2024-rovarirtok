@@ -2,7 +2,6 @@ package GUI.actions;
 
 import javax.swing.JButton;
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
 
 /**
  * Gomb ősosztály, amiből az akciókat reprezentáló gombok származnak le.

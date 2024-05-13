@@ -23,9 +23,7 @@ public class PickupPumpButton extends ActionButton {
         this.setBorderPainted(false);
         this.setFocusPainted(false);
         this.setText("PICKUP PUMP");
-        this.addActionListener((ActionEvent e) -> {
-            Controller.instance.pickupPump();
-        });
+        this.addActionListener((ActionEvent e) -> Controller.instance.pickupPump());
     }
     /**
      * Metódus, ami megmondja, hogy a gomb használható, megjeleníthető-e.

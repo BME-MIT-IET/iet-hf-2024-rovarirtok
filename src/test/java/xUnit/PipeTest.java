@@ -54,7 +54,7 @@ public class PipeTest {
         pipe.setWaterVolume(0);
         pipe.breakPipe();
         pipe.flow(CURRENT_VOLUME);
-        assertEquals(pipe.getWastedWater(), CURRENT_VOLUME);
+        assertEquals(CURRENT_VOLUME, pipe.getWastedWater());
     }
 
     /**
@@ -68,7 +68,7 @@ public class PipeTest {
         pipe.connect(new Pump());
         int flownAmount = pipe.flow(CURRENT_VOLUME);
         assertTrue(pipe.hasWaterFlown());
-        assertEquals(flownAmount, CURRENT_VOLUME);
+        assertEquals(CURRENT_VOLUME, flownAmount);
     }
 
     /**

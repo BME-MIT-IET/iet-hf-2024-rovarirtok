@@ -23,9 +23,7 @@ public class PickupPipeButton extends ActionButton {
         this.setBorderPainted(false);
         this.setFocusPainted(false);
         this.setText("PICKUP PIPE");
-        this.addActionListener((ActionEvent e) -> {
-            Controller.instance.pickupPipe();
-        });
+        this.addActionListener((ActionEvent e) -> Controller.instance.pickupPipe());
     }
     /**
      * Metódus, ami megmondja, hogy a gomb használható, megjeleníthető-e.
