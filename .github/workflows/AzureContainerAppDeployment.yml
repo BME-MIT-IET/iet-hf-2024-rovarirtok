@@ -17,6 +17,7 @@ jobs:
       run:
         shell: bash
     steps:
+      - uses: actions/checkout@v2
       - uses: ./.github/workflows/build-and-test@v1
 
       - name: 'Login via Azure CLI'
