@@ -25,9 +25,7 @@ public class BreakPipeButton extends ActionButton {
         this.setBorderPainted(false);
         this.setFocusPainted(false);
         this.setText("BREAK PIPE");
-        this.addActionListener((ActionEvent e) -> {
-            Controller.instance.breakPipe();
-        });
+        this.addActionListener((ActionEvent e) -> Controller.instance.breakPipe());
     }
 
     /**

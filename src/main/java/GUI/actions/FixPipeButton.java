@@ -24,9 +24,7 @@ public class FixPipeButton extends ActionButton {
         this.setBorderPainted(false);
         this.setFocusPainted(false);
         this.setText("FIX PIPE");
-        this.addActionListener((ActionEvent e) -> {
-            Controller.instance.fixPipe();
-        });
+        this.addActionListener((ActionEvent e) -> Controller.instance.fixPipe());
     }
 
     /**

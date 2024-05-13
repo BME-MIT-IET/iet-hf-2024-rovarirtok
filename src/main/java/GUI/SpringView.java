@@ -16,7 +16,7 @@ public class SpringView extends JButton implements Viewable {
     /**
      * A megjelenítendő forrás.
      */
-    private Spring spring;
+    private transient Spring spring;
     /**
      * A forrás pozíciója.
      */
@@ -25,8 +25,6 @@ public class SpringView extends JButton implements Viewable {
      * A forrás képe.
      */
     private static Image image = new ImageIcon(ImageLoader.loadImage("spring.png")).getImage();
-    // private static Image normal_rollover = new ImageIcon(Controller.assetsPath +
-    // "spring_rollover.png").getImage();
     /**
      * Konstruktor.
      * @param position A megjelenítendő forrás pozíciója.
@@ -38,9 +36,7 @@ public class SpringView extends JButton implements Viewable {
         this.spring = spring;
         this.position = position;
 
-        this.addActionListener((ActionEvent e) -> {
-            Controller.instance.selectField(spring);
-        });
+        this.addActionListener((ActionEvent e) -> Controller.instance.selectField(spring));
 
         this.addMouseMotionListener(new MouseMotionListener() {
             private Point start = null;

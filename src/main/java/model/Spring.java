@@ -4,13 +4,14 @@ package model;
  * A forrásokért felelős osztály
  * A rendszert, pontosabban a belőle kivezető csöveket látja el vízzel
  */
-public class Spring extends FieldNode implements Tickable {
+public class Spring extends FieldNode {
     /**
      * Konstruktor
      */
     public Spring() {
+        // This constructor is intentionally left empty
+        // The Spring class does not require any specific initialization logic
     }
-
     /**
      * Egy időegység elteltét jelenti.
      * A forráshoz kapcsolt csövekbe a lehető legtöbb vizet folyatja a forrásból.

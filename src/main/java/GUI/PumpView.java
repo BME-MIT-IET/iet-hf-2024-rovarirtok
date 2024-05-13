@@ -20,7 +20,7 @@ public class PumpView extends JButton implements Viewable {
     /**
      * A megjelenítendő pumpa.
      */
-    private Pump pump;
+    private transient Pump pump;
     /**
      * A normál állapotú pumpa képe.
      */
@@ -33,7 +33,7 @@ public class PumpView extends JButton implements Viewable {
      * A pumpa épp megjelenítendő képe.
      * Lehet normal vagy broken, alapértelmezetten normal.
      */
-    private Image actual = normal;
+    private transient Image actual = normal;
     /**
      * Konstruktor.
      * @param position A megjelenítendő pumpa pozíciója.
@@ -44,9 +44,7 @@ public class PumpView extends JButton implements Viewable {
         this.pump = pump;
         this.position = position;
 
-        this.addActionListener((ActionEvent e) -> {
-            Controller.instance.selectField(this.pump);
-        });
+        this.addActionListener((ActionEvent e) -> Controller.instance.selectField(this.pump));
 
         this.addMouseMotionListener(new MouseMotionListener() {
             private Point start = null;

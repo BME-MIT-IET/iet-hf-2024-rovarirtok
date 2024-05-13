@@ -22,9 +22,7 @@ public class MakeStickyButton extends ActionButton {
         this.setBorderPainted(false);
         this.setFocusPainted(false);
         this.setText("MAKE STICKY");
-        this.addActionListener((ActionEvent e) -> {
-            Controller.instance.makeSticky();
-        });
+        this.addActionListener((ActionEvent e) -> Controller.instance.makeSticky());
     }
     /**
      * Metódus, ami megmondja, hogy a gomb használható, megjeleníthető-e.

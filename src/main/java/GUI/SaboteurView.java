@@ -19,7 +19,7 @@ public class SaboteurView extends JButton implements Viewable {
     /**
      * A játékbeli megjelenítendő szabotőr.
      */
-    private Saboteur saboteur;
+    private transient Saboteur saboteur;
     /**
      * A szabotőr ikonja.
      */
@@ -33,9 +33,7 @@ public class SaboteurView extends JButton implements Viewable {
 
         this.saboteur = saboteur;
 
-        this.addActionListener((ActionEvent e) -> {
-            Controller.instance.selectPlayer(saboteur);
-        });
+        this.addActionListener((ActionEvent e) -> Controller.instance.selectPlayer(saboteur));
 
         Point position = getPosition();
         this.setBounds(position.x, position.y, SIZE, SIZE);

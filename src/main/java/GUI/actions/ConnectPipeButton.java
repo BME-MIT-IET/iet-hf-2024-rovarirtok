@@ -22,9 +22,7 @@ public class ConnectPipeButton extends ActionButton {
         this.setBorderPainted(false);
         this.setFocusPainted(false);
         this.setText("CONNECT PIPE");
-        this.addActionListener((ActionEvent e) -> {
-            Controller.instance.connectPipe();
-        });
+        this.addActionListener((ActionEvent e) -> Controller.instance.connectPipe());
     }
     /**
      * Metódus, ami megmondja, hogy a gomb használható, megjeleníthető-e.

@@ -23,9 +23,7 @@ public class MakeSlipperyButton extends ActionButton {
         this.setBorderPainted(false);
         this.setFocusPainted(false);
         this.setText("MAKE SLIPPERY");
-        this.addActionListener((ActionEvent e) -> {
-            Controller.instance.makeSlippery();
-        });
+        this.addActionListener((ActionEvent e) -> Controller.instance.makeSlippery());
     }
     /**
      * Metódus, ami megmondja, hogy a gomb használható, megjeleníthető-e.

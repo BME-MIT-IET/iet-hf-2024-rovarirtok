@@ -126,6 +126,6 @@ public class PumpTest {
         pump.breakPump();
         pump.tick();
         assertFalse(pipeIn.isEmpty());
-        assertEquals(pipeOut.getWastedWater(), 0);
+        assertEquals(0, pipeOut.getWastedWater());
     }
 }

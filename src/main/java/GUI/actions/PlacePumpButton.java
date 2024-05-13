@@ -23,9 +23,7 @@ public class PlacePumpButton extends ActionButton {
         this.setBorderPainted(false);
         this.setFocusPainted(false);
         this.setText("PLACE PUMP");
-        this.addActionListener((ActionEvent e) -> {
-            Controller.instance.placePump();
-        });
+        this.addActionListener((ActionEvent e) -> Controller.instance.placePump());
     }
     /**
      * Metódus, ami megmondja, hogy a gomb használható, megjeleníthető-e.
