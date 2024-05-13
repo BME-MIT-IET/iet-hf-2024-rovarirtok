@@ -79,4 +79,16 @@ public class InitalGameStateTest extends AssertJSwingJUnitTestCase {
         int saboteurScore = Integer.parseInt(window.label("saboteurScore").text());
         assertTrue(0 < saboteurScore);
     }
+
+    @Test
+    public void testInitialState() {
+        Controller instance = new Controller();
+        instance.initModel();
+        assertNotNull(instance.window);
+        assertNotNull(instance.fields);
+        assertNotNull(instance.players);
+
+        assertEquals(4, instance.players.size());
+        assertEquals(7, instance.fields.size());
+    }
 }

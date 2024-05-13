@@ -67,8 +67,7 @@ public class InventoryPanel extends JPanel {
             g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-            int w = getWidth();
-            int h = getHeight();
+            int w = getWidth(), h = getHeight();
             g2d.drawImage(pumpImage, 0, 0, w, h, null);
             if (this.getModel().isRollover() || !isEnabled()) {
                 g.setColor(new Color(0, 0, 0, 50));
@@ -127,14 +126,22 @@ public class InventoryPanel extends JPanel {
         Mechanic mechanic = (Mechanic) Controller.instance.selectedPlayer;
         if (mechanic.getPipe() != null) {
             pipeButton.setVisible(true);
-            pipeButton.setEnabled(pipeButton.canPerform());
+            if (pipeButton.canPerform()) {
+                pipeButton.setEnabled(true);
+            } else {
+                pipeButton.setEnabled(false);
+            }
         } else {
             pipeButton.setVisible(false);
         }
 
         if (mechanic.getPump() != null) {
             pumpButton.setVisible(true);
-            pumpButton.setEnabled(pumpButton.canPerform());
+            if (pumpButton.canPerform()) {
+                pumpButton.setEnabled(true);
+            } else {
+                pumpButton.setEnabled(false);
+            }
         } else {
             pumpButton.setVisible(false);
         }
