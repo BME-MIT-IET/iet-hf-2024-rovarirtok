@@ -17,7 +17,7 @@ public class MechanicView extends JButton implements Viewable {
     /**
      * A megjelnített Mechanic képének mérete.
      */
-    private static int SIZE = (int) (Window.BUTTONSIZE * 0.6);
+    private static int size = (int) (Window.BUTTONSIZE * 0.6);
     /**
      * A játékbeli megjelenítendő Mechanic.
      */
@@ -38,7 +38,7 @@ public class MechanicView extends JButton implements Viewable {
         this.addActionListener((ActionEvent e) -> Controller.instance.selectPlayer(this.mechanic));
 
         Point position = getPosition();
-        this.setBounds(position.x, position.y, SIZE, SIZE);
+        this.setBounds(position.x, position.y, size, size);
 
         this.setContentAreaFilled(false);
         this.setBorderPainted(false);
@@ -53,14 +53,14 @@ public class MechanicView extends JButton implements Viewable {
         Field field = mechanic.getPosition();
 
         double index = field.getPlayerIndex(mechanic);
-        double dx = Math.cos(index * Math.PI / 2.0) * Window.BUTTONSIZE / 2,
-                dy = Math.sin(index * Math.PI / 2.0) * Window.BUTTONSIZE / 2;
+        double dx = Math.cos(index * Math.PI / 2.0) * Window.BUTTONSIZE / 2;
+        double dy = Math.sin(index * Math.PI / 2.0) * Window.BUTTONSIZE / 2;
 
         Point position = Controller.instance.fields.get(field).getPosition();
-        int cx = position.x + Window.BUTTONSIZE / 2,
-                cy = position.y + Window.BUTTONSIZE / 2;
+        int cx = position.x + Window.BUTTONSIZE / 2;
+        int cy = position.y + Window.BUTTONSIZE / 2;
 
-        return new Point(cx + (int) dx - SIZE / 2, cy + (int) dy - SIZE / 2);
+        return new Point(cx + (int) dx - size / 2, cy + (int) dy - size / 2);
     }
     /**
      * A megjelenítendő objektumot rajzoltatja újra, a megváltozott adatok alapján.
@@ -81,7 +81,8 @@ public class MechanicView extends JButton implements Viewable {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        int w = getWidth(), h = getHeight();
+        int w = getWidth();
+        int h = getHeight();
 
         boolean isSelected = Controller.instance.selectedPlayer == mechanic;
         if (isSelected) {

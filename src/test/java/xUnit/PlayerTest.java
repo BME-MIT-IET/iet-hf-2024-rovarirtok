@@ -1,4 +1,4 @@
-package xUnit;
+package xunit;
 
 import model.*;
 import org.junit.Before;

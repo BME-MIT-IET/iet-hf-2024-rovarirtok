@@ -40,7 +40,7 @@ public class PickupPipeButton extends ActionButton {
         if (!(player instanceof Mechanic))
             return false;
 
-        if (Controller.instance.selectedFields.size() != 0
+        if (!Controller.instance.selectedFields.isEmpty()
                 || !(player.getPosition() instanceof Cistern))
             return false;
         return ((Cistern)player.getPosition()).isPipeAvailable() && ((Mechanic) player).getPipe() == null;

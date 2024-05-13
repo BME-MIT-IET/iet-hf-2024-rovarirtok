@@ -1,4 +1,4 @@
-package xUnit;
+package xunit;
 
 import model.Cistern;
 import model.Pipe;
@@ -50,7 +50,7 @@ public class CisternTest {
         cistern.connect(pipe1);
         cistern.connect(pipe2);
         cistern.tick();
-        assertEquals(cistern.getDrainedWater(), 300);
+        assertEquals(300, cistern.getDrainedWater());
     }
 
     /**

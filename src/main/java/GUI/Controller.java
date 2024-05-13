@@ -31,7 +31,7 @@ public class Controller {
     /**
      * A pontszám, amely elérése szükséges a játék megnyeréséért.
      */
-    public static int MAX_SCORE = 100;
+    public static int maxScore = 100;
     /**
      * A játékban résztvevő játékosokat tároló hash map.
      */
@@ -272,7 +272,7 @@ public class Controller {
         // Contains all of the fields that have
         // been ticked so we don't tick a field twice
         Set<FieldNode> ticked = new HashSet<>();
-        while (0 < toSee.size()) {
+        while (!toSee.isEmpty()) {
             FieldNode node = toSee.poll();
             node.tick();
             ticked.add(node);
@@ -442,7 +442,7 @@ public class Controller {
      * Inicializálja a Model-t, majd elindít egy új szálat, ami ciklikusan végrehajtja a vezérlő cselekvéseket.
      * A cselekvések között frissíti a nézeteket, majd vár egy másodpercet, mielőtt újra futna.
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Controller.instance.initModel();
         new Thread(() -> {
             try {

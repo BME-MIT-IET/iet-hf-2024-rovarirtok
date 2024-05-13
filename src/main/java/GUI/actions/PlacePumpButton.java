@@ -40,7 +40,7 @@ public class PlacePumpButton extends ActionButton {
         if (!(player instanceof Mechanic))
             return false;
 
-        return Controller.instance.selectedFields.size() == 0
+        return Controller.instance.selectedFields.isEmpty()
                 && player.getPosition() instanceof Pipe && ((Mechanic) player).getPump() != null
                 && ((Pipe) player.getPosition()).isEmpty()
                 && !((Pipe) player.getPosition()).isBroken();

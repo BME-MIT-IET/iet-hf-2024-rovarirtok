@@ -1,4 +1,4 @@
-package xUnit;
+package xunit;
 
 import model.Pipe;
 import model.Saboteur;

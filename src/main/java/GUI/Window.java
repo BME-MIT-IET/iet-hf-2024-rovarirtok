@@ -108,7 +108,7 @@ public class Window extends JFrame {
      * @param g A grafikus objektum.
      * @return A grafikus objektum.
      */
-    static public Graphics2D getGraphics2D(Graphics g) {
+    public static Graphics2D getGraphics2D(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
         g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
@@ -130,14 +130,14 @@ public class Window extends JFrame {
     public void checkGameEnded() {
         int mechanicScore = Controller.instance.getMechanicScore();
         int saboteurScore = Controller.instance.getSaboteurScore();
-        if (mechanicScore <= Controller.MAX_SCORE && saboteurScore <= Controller.MAX_SCORE) {
+        if (mechanicScore <= Controller.maxScore && saboteurScore <= Controller.maxScore) {
             return;
         }
         String text = null;
         ImageIcon icon = null;
-        if (mechanicScore > Controller.MAX_SCORE && saboteurScore > Controller.MAX_SCORE) {
+        if (mechanicScore > Controller.maxScore && saboteurScore > Controller.maxScore) {
             text = "It's a tie!";
-        } else if (mechanicScore > Controller.MAX_SCORE) {
+        } else if (mechanicScore > Controller.maxScore) {
             text = "The Mechanic team won the game!";
             icon = new ImageIcon(MechanicView.image.getScaledInstance(BUTTONSIZE, BUTTONSIZE, Image.SCALE_SMOOTH));
         } else {

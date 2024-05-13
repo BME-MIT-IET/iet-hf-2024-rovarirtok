@@ -40,7 +40,7 @@ public class PlacePipeButton extends ActionButton {
         if (!(player instanceof Mechanic))
             return false;
 
-        if(Controller.instance.selectedFields.size() != 0
+        if(!Controller.instance.selectedFields.isEmpty()
                 || !(player.getPosition() instanceof FieldNode))
             return false;
         return ((Mechanic)player).getPipe() != null;

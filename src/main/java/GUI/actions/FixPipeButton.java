@@ -42,7 +42,7 @@ public class FixPipeButton extends ActionButton {
         if (!(player instanceof Mechanic))
             return false;
 
-        if (Controller.instance.selectedFields.size() != 0)
+        if (!Controller.instance.selectedFields.isEmpty())
             return false;
 
         Field position = player.getPosition();

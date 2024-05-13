@@ -79,7 +79,7 @@ public class MenuPanel extends JPanel {
 
             title.setFont(customFont);
         } catch (IOException|FontFormatException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
     }
 }
