@@ -42,7 +42,8 @@ public class InventoryPanel extends JPanel {
             g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-            int w = getWidth(), h = getHeight();
+            int w = getWidth();
+            int h = getHeight();
             g2d.drawImage(pipeImage, 0, 0, w, h, null);
             if (this.getModel().isRollover() || !isEnabled()) {
                 g.setColor(new Color(0, 0, 0, 50));
@@ -66,7 +67,8 @@ public class InventoryPanel extends JPanel {
             g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-            int w = getWidth(), h = getHeight();
+            int w = getWidth();
+            int h = getHeight();
             g2d.drawImage(pumpImage, 0, 0, w, h, null);
             if (this.getModel().isRollover() || !isEnabled()) {
                 g.setColor(new Color(0, 0, 0, 50));
@@ -82,7 +84,6 @@ public class InventoryPanel extends JPanel {
         super();
         this.setOpaque(false);
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-        // this.setBorder(new EmptyBorder(2, 0, 0, 0));
 
         JLabel title = new JLabel("Inventory");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -126,22 +127,14 @@ public class InventoryPanel extends JPanel {
         Mechanic mechanic = (Mechanic) Controller.instance.selectedPlayer;
         if (mechanic.getPipe() != null) {
             pipeButton.setVisible(true);
-            if (pipeButton.canPerform()) {
-                pipeButton.setEnabled(true);
-            } else {
-                pipeButton.setEnabled(false);
-            }
+            pipeButton.setEnabled(pipeButton.canPerform());
         } else {
             pipeButton.setVisible(false);
         }
 
         if (mechanic.getPump() != null) {
             pumpButton.setVisible(true);
-            if (pumpButton.canPerform()) {
-                pumpButton.setEnabled(true);
-            } else {
-                pumpButton.setEnabled(false);
-            }
+            pumpButton.setEnabled(pumpButton.canPerform());
         } else {
             pumpButton.setVisible(false);
         }

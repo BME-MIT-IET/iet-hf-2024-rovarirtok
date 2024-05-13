@@ -48,24 +48,24 @@ public class PipeView extends JPanel implements Viewable {
     /**
      * A cső csúszós és törött állapotbeli képe.
      */
-    private static Image slippery_broken = new ImageIcon(ImageLoader.loadImage("pipe_slippery_broken.png")).getImage();
+    private static Image slipperyBroken = new ImageIcon(ImageLoader.loadImage("pipe_slippery_broken.png")).getImage();
     /**
      * A cső csúszós és normal, azaz nem törött állapotbeli képe.
      */
-    private static Image slippery_normal = new ImageIcon(ImageLoader.loadImage("pipe_slippery.png")).getImage();
+    private static Image slipperyNormal = new ImageIcon(ImageLoader.loadImage("pipe_slippery.png")).getImage();
     /**
      * A cső ragacsos és törött állapotbeli képe.
      */
-    private static Image sticky_broken = new ImageIcon(ImageLoader.loadImage("pipe_sticky_broken.png")).getImage();
+    private static Image stickyBroken = new ImageIcon(ImageLoader.loadImage("pipe_sticky_broken.png")).getImage();
     /**
      * A cső ragacsos és normal, azaz nem törött állapotbeli képe.
      */
-    private static Image sticky_normal = new ImageIcon(ImageLoader.loadImage("pipe_sticky.png")).getImage();
+    private static Image stickyNormal = new ImageIcon(ImageLoader.loadImage("pipe_sticky.png")).getImage();
     /**
      * A cső épp megjelenítendő képe.
      * Alapértelmezetten normal.
      */
-    public transient Image actual = normal;
+    private transient Image actual = normal;
     /**
      * A cső színe.
      * Alapértelmezetten fekete.
@@ -80,7 +80,7 @@ public class PipeView extends JPanel implements Viewable {
 
         this.pipe = pipe;
         List<FieldNode> ends = pipe.getEnds();
-        if (ends.size() == 0) {
+        if (ends.isEmpty()) {
             end1Position = new Point(50, 50);
             end2Position = new Point(100, 100);
         } else if (ends.size() == 1) {
@@ -98,6 +98,14 @@ public class PipeView extends JPanel implements Viewable {
         this.setBounds(0, 0, Window.WIDTH, Window.HEIGHT);
         this.setOpaque(false);
         this.add(pipeButton);
+    }
+
+    public Image getActual() {
+        return actual;
+    }
+
+    public void setActual(Image image) {
+        this.actual = image;
     }
 
     /**
@@ -124,19 +132,19 @@ public class PipeView extends JPanel implements Viewable {
         boolean sticky = pipe.isSticky();
         if (isBroken) {
             if (slippery) {
-                actual = slippery_broken;
+                setActual(slipperyBroken);
             } else if (sticky) {
-                actual = sticky_broken;
+                setActual(stickyBroken);
             } else {
-                actual = broken;
+                setActual(broken);
             }
         } else {
             if (slippery) {
-                actual = slippery_normal;
+                setActual(slipperyNormal);
             } else if (sticky) {
-                actual = sticky_normal;
+                setActual(stickyNormal);
             } else {
-                actual = normal;
+                setActual(normal);
             }
         }
         if (!pipe.hasWaterFlown())
@@ -156,7 +164,7 @@ public class PipeView extends JPanel implements Viewable {
      */
     private void updateEnds() {
         List<FieldNode> ends = pipe.getEnds();
-        if (ends.size() == 0) {
+        if (ends.isEmpty()) {
             end1Position = centerPosition;
             end2Position = centerPosition;
         } else if (ends.size() == 1) {
@@ -218,7 +226,8 @@ public class PipeView extends JPanel implements Viewable {
                  */
                 @Override
                 public void mouseDragged(MouseEvent e) {
-                    int dx = e.getX() - start.x, dy = e.getY() - start.y;
+                    int dx = e.getX() - start.x;
+                    int dy = e.getY() - start.y;
                     centerPosition.setLocation(centerPosition.x + dx, centerPosition.y + dy);
                     Controller.instance.window.updateAllViews();
                 }
@@ -245,14 +254,15 @@ public class PipeView extends JPanel implements Viewable {
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
 
-            int w = getWidth(), h = getHeight();
+            int w = getWidth();
+            int h = getHeight();
             boolean isSelected = Controller.instance.selectedFields.contains(pipe);
             if (isSelected) {
                 g.setColor(Color.GREEN);
                 g.fillRoundRect(0, 0, w, h, 25, 25);
             }
 
-            Window.getGraphics2D(g).drawImage(actual, 2, 2, w - 4, h - 4, null);
+            Window.getGraphics2D(g).drawImage(getActual(), 2, 2, w - 4, h - 4, null);
             if (this.getModel().isRollover()) {
                 g.setColor(new Color(0, 0, 0, 50));
                 g.fillRoundRect(2, 2, w - 4, h - 4, 25, 25);
