@@ -17,6 +17,7 @@ public class PickupPipeButton extends ActionButton {
     public PickupPipeButton() {
         super();
 
+        this.setName("pickupPipeButton");
         this.setContentAreaFilled(false);
         this.setRolloverEnabled(true);
         this.setContentAreaFilled(false);

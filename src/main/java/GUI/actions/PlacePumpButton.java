@@ -17,6 +17,7 @@ public class PlacePumpButton extends ActionButton {
     public PlacePumpButton() {
         super();
 
+        this.setName("placePumpButton");
         this.setContentAreaFilled(false);
         this.setRolloverEnabled(true);
         this.setContentAreaFilled(false);
