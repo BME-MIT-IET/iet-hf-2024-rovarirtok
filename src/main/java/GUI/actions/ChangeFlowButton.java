@@ -47,6 +47,9 @@ public class ChangeFlowButton extends ActionButton {
         if (selectedFields.size() != 2)
             return false;
 
+        if((player.getPosition() instanceof Pump pump && pump.isBroken()))
+            return false;
+
         if(!(selectedFields.get(0) instanceof Pipe) || !(selectedFields.get(1) instanceof Pipe))
             return false;
 
