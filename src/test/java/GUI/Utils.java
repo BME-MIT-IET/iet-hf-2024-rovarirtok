@@ -57,7 +57,7 @@ public class Utils {
     }
 
     public static <T extends Component> GenericTypeMatcher<T> findFirst(Class<T> componentClass, Predicate<T> predicate) {
-        return new GenericTypeMatcher<T>(componentClass, false) {
+        return new GenericTypeMatcher<T>(componentClass, true) {
             private boolean first = true;
 
             @Override
