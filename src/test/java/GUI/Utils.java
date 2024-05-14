@@ -5,7 +5,6 @@ import org.assertj.swing.core.GenericTypeMatcher;
 import model.Cistern;
 import model.Mechanic;
 import model.Pipe;
-import model.Pump;
 import model.Saboteur;
 import model.Spring;
 

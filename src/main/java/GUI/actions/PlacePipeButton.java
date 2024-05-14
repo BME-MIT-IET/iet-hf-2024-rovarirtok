@@ -17,6 +17,7 @@ public class PlacePipeButton extends ActionButton {
     public PlacePipeButton() {
         super();
 
+        this.setName("placePipeButton");
         this.setContentAreaFilled(false);
         this.setRolloverEnabled(true);
         this.setContentAreaFilled(false);

@@ -16,6 +16,7 @@ public class MakeStickyButton extends ActionButton {
     public MakeStickyButton() {
         super();
 
+        this.setName("makeStickyButton");
         this.setContentAreaFilled(false);
         this.setRolloverEnabled(true);
         this.setContentAreaFilled(false);
