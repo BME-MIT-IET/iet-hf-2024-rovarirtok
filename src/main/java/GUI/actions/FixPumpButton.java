@@ -18,6 +18,7 @@ public class FixPumpButton extends ActionButton {
     public FixPumpButton() {
         super();
 
+        this.setName("fixPumpButton");
         this.setContentAreaFilled(false);
         this.setRolloverEnabled(true);
         this.setContentAreaFilled(false);

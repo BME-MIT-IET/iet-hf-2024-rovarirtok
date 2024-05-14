@@ -5,6 +5,7 @@ import org.assertj.swing.core.GenericTypeMatcher;
 import model.Cistern;
 import model.Mechanic;
 import model.Pipe;
+import model.Pump;
 import model.Saboteur;
 import model.Spring;
 
@@ -56,7 +57,7 @@ public class Utils {
     }
 
     public static <T extends Component> GenericTypeMatcher<T> findFirst(Class<T> componentClass, Predicate<T> predicate) {
-        return new GenericTypeMatcher<T>(componentClass, false) {
+        return new GenericTypeMatcher<T>(componentClass, true) {
             private boolean first = true;
 
             @Override
