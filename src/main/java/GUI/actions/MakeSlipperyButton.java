@@ -17,6 +17,7 @@ public class MakeSlipperyButton extends ActionButton {
     public MakeSlipperyButton() {
         super();
 
+        this.setName("makeSlipperyButton");
         this.setContentAreaFilled(false);
         this.setRolloverEnabled(true);
         this.setContentAreaFilled(false);
