@@ -18,4 +18,4 @@ A tesztek kódlefedettségének folyamatos mérése alapján bővítjük a teszt
 
 Az automatizált **UI tesztek** készítése biztosítja a felhasználói felület megfelelő működését és stabilitását, elősegítve ezzel a felhasználói élmény javítását és a hibák korai felfedezését a fejlesztési folyamat során.
 
-A **Behavior Driven Development (BDD)** alapú tesztek létrehozása segít abban, hogy a funkcionális követelmények teljesítését ellenőrizzük és dokumentáljuk. Ezáltal biztosítjuk, hogy a fejlesztett funkciók megfeleljenek az üzleti elvárásoknak és a felhasználói igényeknek.
+A **Manuális tesztek** létrehozása segít abban, hogy a funkcionális követelményeket alaposan ellenőrizzük és dokumentáljuk, kézzel végzett ellenőrzéseket végezve. Ezáltal biztosítjuk, hogy a fejlesztett funkciók megfeleljenek az üzleti elvárásoknak és a felhasználói igényeknek, és lehetőséget adunk az emberi interakcióra a rendszerrel, amely olykor szükséges teljes körű értékeléshez.
