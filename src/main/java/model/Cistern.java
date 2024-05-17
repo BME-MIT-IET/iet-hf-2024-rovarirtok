@@ -41,7 +41,7 @@ public class Cistern extends FieldNode {
      */
     @Override
     public Pipe takePipe() {
-        if (isPipeAvailable() == false) {
+        if (!isPipeAvailable()) {
             return null;
         }
         pipeAvailable = 20;

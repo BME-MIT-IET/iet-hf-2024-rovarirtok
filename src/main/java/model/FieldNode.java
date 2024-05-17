@@ -46,9 +46,4 @@ public abstract class FieldNode extends Field implements Tickable {
         }
         return nodes;
     }
-
-    /**
-     * A csomópont tickelése, adatainak léptetése.
-     */
-    public abstract void tick();
 }

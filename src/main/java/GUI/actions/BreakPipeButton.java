@@ -42,7 +42,7 @@ public class BreakPipeButton extends ActionButton {
         if (player == null)
             return false;
 
-        if (Controller.instance.selectedFields.size() != 0)
+        if (!Controller.instance.selectedFields.isEmpty())
             return false;
 
         Field position = player.getPosition();
