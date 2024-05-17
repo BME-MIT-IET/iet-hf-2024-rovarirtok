@@ -14,7 +14,8 @@ A *Spring* és *Pump* osztályok implementáltak egy olyan interfészt, amelyet 
 
 A *Window* és *MenuPanel* osztályok rendelkeztek olyan attribútummal, amelyek megegyeztek az ősosztályuk attribútumával, amely hibákhoz és olvashatósági problémákhoz vezet.
 
+Néhány elnevezés a projektünkben nem követte a standard Java mintát, néhányat módosítottam, hogy kövesse a standard formátumot.
+
 Mindezek javításával, a kódunk tisztább, biztonságosabb és olvashatóbb lett.
 
-A kódunk továbbá az első lefutás után **184** *code smellel* rendelkezett, amelyeket a javítások és módosítások után **84**-re 
-csökkent.
+Továbbá az analízis első lefutása után **127** *code smellel* rendelkezett a projektünk kódja. A javítás során ez megugrott **153**-ig is, viszont további módosítások után **84**-re csökkent. Emellett a kód duplikáció is csökkent, valamint a lefedettségünk növekedett, a tesztkészítőknek köszönhetően.

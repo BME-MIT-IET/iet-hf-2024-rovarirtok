@@ -108,7 +108,7 @@ public class Window extends JFrame {
      * @param g A grafikus objektum.
      * @return A grafikus objektum.
      */
-    static public Graphics2D getGraphics2D(Graphics g) {
+    public static Graphics2D getGraphics2D(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
         g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
